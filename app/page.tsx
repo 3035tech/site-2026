@@ -8,10 +8,12 @@ import { Testimonials } from "@/components/testimonials"
 import { About } from "@/components/about"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { SectionViewTracker } from "@/components/section-view-tracker"
 
 export default function HomePage() {
   return (
     <main>
+      <SectionViewTracker />
       <Navbar />
       <Hero />
       <ClientLogos />

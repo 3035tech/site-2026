@@ -3,6 +3,7 @@ import { DM_Sans, Instrument_Serif } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Providers } from '@/components/providers'
 import { StructuredData } from '@/components/structured-data'
+import { GaAnalytics } from '@/components/ga-analytics'
 import './globals.css'
 
 const dmSans = DM_Sans({ 
@@ -91,6 +92,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+    other: {
+      'facebook-domain-verification': 's89hy8t6cay9f9yz0tw0x9sqga0uy3',
+    },
   },
 }
 
@@ -109,6 +113,7 @@ export default function RootLayout({
           {children}
         </Providers>
         <Analytics />
+        <GaAnalytics />
       </body>
     </html>
   )

@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { useLanguage, Language } from "@/lib/i18n"
+import { trackEvent } from "@/lib/ga"
 
 const mobileLanguages: { code: Language; flag: string }[] = [
   { code: "en", flag: "🇺🇸" },
@@ -64,6 +65,12 @@ export function Navbar() {
       })
     }
     setIsMobileMenuOpen(false)
+
+    trackEvent({
+      action: "section_click",
+      category: "navigation",
+      label: targetId,
+    })
   }
 
   const navLinks = [
