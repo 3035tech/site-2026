@@ -1,40 +1,43 @@
 "use client"
 
 import Image from "next/image"
-
-const curriculum = {
-  technical: [
-    "Programming Logic & Fundamentals",
-    "JavaScript — core language for modern web",
-    "Frontend with React.js",
-    "Backend with Java & Spring Boot",
-    "Databases — SQL & data modeling",
-    "Mobile with React Native",
-    "Git & GitFlow workflows",
-  ],
-  professional: [
-    "Scrum & Project Management",
-    "Soft Skills & HR Sessions",
-    "Professional workplace behavior",
-    "Team dynamics & collaboration",
-  ],
-}
-
-interface Stat {
-  value?: string
-  logo?: string
-  label: string
-}
-
-const stats: Stat[] = [
-  { value: "5", label: "Editions completed" },
-  { value: "100%", label: "Company subsidized" },
-  { value: "80%+", label: "Graduates employed" },
-  { logo: "https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg.adapt.svg/1493030643828.svg", label: "Alumni at SAP" },
-  { logo: "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg", label: "Alumni at Dell" },
-]
+import { useLanguage } from "@/lib/i18n"
 
 export function Teach() {
+  const { t } = useLanguage()
+  
+  const curriculum = {
+    technical: [
+      t("teach.curriculum.logic"),
+      t("teach.curriculum.js"),
+      t("teach.curriculum.react"),
+      t("teach.curriculum.java"),
+      t("teach.curriculum.db"),
+      t("teach.curriculum.mobile"),
+      t("teach.curriculum.git"),
+    ],
+    professional: [
+      t("teach.curriculum.scrum"),
+      t("teach.curriculum.softskills"),
+      t("teach.curriculum.workplace"),
+      t("teach.curriculum.teamwork"),
+    ],
+  }
+
+  interface Stat {
+    value?: string
+    logo?: string
+    labelKey: string
+  }
+
+  const stats: Stat[] = [
+    { value: "5", labelKey: "teach.stats.editions" },
+    { value: "100%", labelKey: "teach.stats.subsidized" },
+    { value: "80%+", labelKey: "teach.stats.employed" },
+    { logo: "/images/logos/sap.png", labelKey: "teach.stats.sapAlumni" },
+    { logo: "/images/logos/dell.svg", labelKey: "teach.stats.dellAlumni" },
+  ]
+  
   return (
     <section
       id="teach"
@@ -58,45 +61,30 @@ export function Teach() {
           <div>
             {/* Section Badge */}
             <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] bg-brand-purple/10 border border-brand-purple/15 text-brand-purple">
-              Social Impact
+              {t("teach.label")}
             </span>
 
             {/* Headline */}
             <h2 className="mt-6 text-4xl sm:text-5xl font-serif text-white">
-              3035<span className="text-brand-purple">TEACH</span>
+              {t("teach.title")}<span className="text-brand-purple">{t("teach.titleHighlight")}</span>
             </h2>
 
             {/* Description */}
             <div className="mt-6 space-y-4 text-white/55 leading-relaxed">
-              <p>
-                A fully company-subsidized developer training program that
-                transforms aspiring professionals into enterprise-ready engineers.
-                Now in its 5th edition, 3035TEACH is our commitment to giving back
-                — nurturing the next generation of technology talent in Brazil.
-              </p>
-              <p>
-                The program is 100% funded by 3035TECH, with no cost to
-                participants. We take people with zero experience and guide them
-                through a complete full-stack development journey — from
-                programming logic to deploying real projects.
-              </p>
-              <p>
-                More than 80% of graduates who completed the program are now
-                employed and working in the tech industry. Our alumni are now
-                building solutions at companies like SAP and Dell, proving that
-                investing in people creates lasting impact.
-              </p>
+              <p>{t("teach.desc1")}</p>
+              <p>{t("teach.desc2")}</p>
+              <p>{t("teach.desc3")}</p>
             </div>
 
             {/* Curriculum */}
             <div className="mt-10 grid sm:grid-cols-2 gap-8">
               <div>
                 <h4 className="text-white font-medium mb-4 text-sm uppercase tracking-wider">
-                  Technical Track
+                  {t("teach.technicalTrack")}
                 </h4>
                 <ul className="space-y-2">
-                  {curriculum.technical.map((item) => (
-                    <li key={item} className="text-white/45 text-sm flex items-start gap-2">
+                  {curriculum.technical.map((item, index) => (
+                    <li key={index} className="text-white/45 text-sm flex items-start gap-2">
                       <span className="text-brand-purple mt-1.5">•</span>
                       {item}
                     </li>
@@ -105,11 +93,11 @@ export function Teach() {
               </div>
               <div>
                 <h4 className="text-white font-medium mb-4 text-sm uppercase tracking-wider">
-                  Professional Track
+                  {t("teach.professionalTrack")}
                 </h4>
                 <ul className="space-y-2">
-                  {curriculum.professional.map((item) => (
-                    <li key={item} className="text-white/45 text-sm flex items-start gap-2">
+                  {curriculum.professional.map((item, index) => (
+                    <li key={index} className="text-white/45 text-sm flex items-start gap-2">
                       <span className="text-brand-purple mt-1.5">•</span>
                       {item}
                     </li>
@@ -120,9 +108,7 @@ export function Teach() {
 
             {/* Key Message */}
             <p className="mt-10 text-white/70 text-sm italic border-l-2 border-brand-purple/30 pl-4">
-              This is not just a coding bootcamp. It&apos;s a complete professional
-              formation — from technical fundamentals to enterprise soft skills —
-              designed to make graduates truly ready for the job market.
+              {t("teach.keyMessage")}
             </p>
           </div>
 
@@ -139,7 +125,7 @@ export function Teach() {
               </div>
               <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
                 <span className="text-white/40 text-sm uppercase tracking-widest">
-                  Editions
+                  {t("teach.editions")}
                 </span>
               </div>
             </div>
@@ -148,14 +134,14 @@ export function Teach() {
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
               {stats.map((stat) => (
                 <div
-                  key={stat.label}
+                  key={stat.labelKey}
                   className="bg-brand-purple/5 border border-brand-purple/[0.08] rounded-2xl p-4 text-center flex flex-col items-center justify-center"
                 >
                   {stat.logo ? (
                     <div className="h-8 flex items-center justify-center">
                       <Image
                         src={stat.logo}
-                        alt={stat.label}
+                        alt={t(stat.labelKey)}
                         width={60}
                         height={32}
                         className="h-6 w-auto brightness-0 invert opacity-70"
@@ -167,7 +153,7 @@ export function Teach() {
                       {stat.value}
                     </div>
                   )}
-                  <div className="mt-1 text-xs text-white/40">{stat.label}</div>
+                  <div className="mt-1 text-xs text-white/40">{t(stat.labelKey)}</div>
                 </div>
               ))}
             </div>

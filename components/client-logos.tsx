@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { useLanguage } from "@/lib/i18n"
 
 interface Client {
   name: string
@@ -8,24 +9,26 @@ interface Client {
 }
 
 const clients: Client[] = [
-  { name: "Arezzo", logo: "https://www.3035tech.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Farezzo_logo.502e7e07.png&w=256&q=75" },
-  { name: "ClickFunnels", logo: "https://www.3035tech.com/_next/static/media/click_logo.a58627d9.svg" },
-  { name: "Karsten", logo: "https://www.3035tech.com/_next/static/media/karsten_logo.bf77de6b.svg" },
-  { name: "LunchTeam", logo: "https://www.3035tech.com/_next/static/media/lunch_team_logo.124166cb.svg" },
-  { name: "GoMoney", logo: "https://gomoney.me/images/logo-branco-gomoney.png" },
-  { name: "DoctorClin", logo: "https://www.3035tech.com/_next/static/media/doctorclin_logo.72c9e61b.svg" },
-  { name: "The Fruit People", logo: "https://www.3035tech.com/_next/static/media/fruit_people_logo.5298d9dd.svg" },
-  { name: "Drivvo", logo: "https://www.3035tech.com/_next/static/media/drivvo_logo.a8789e24.svg" },
-  { name: "Vans", logo: "https://www.3035tech.com/_next/static/media/vans_logo.4ec5c258.svg" },
+  { name: "Arezzo", logo: "/images/logos/arezzo.png" },
+  { name: "ClickFunnels", logo: "/images/logos/clickfunnels.svg" },
+  { name: "Karsten", logo: "/images/logos/karsten.svg" },
+  { name: "LunchTeam", logo: "/images/logos/lunchteam.svg" },
+  { name: "GoMoney", logo: "/images/logos/gomoney.png" },
+  { name: "DoctorClin", logo: "/images/logos/doctorclin.svg" },
+  { name: "The Fruit People", logo: "/images/logos/fruitpeople.svg" },
+  { name: "Drivvo", logo: "/images/logos/drivvo.svg" },
+  { name: "Vans", logo: "/images/logos/vans.svg" },
 ]
 
 export function ClientLogos() {
+  const { t } = useLanguage()
+  
   return (
     <section className="relative bg-navy-dark py-16 border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <p className="text-center text-xs uppercase tracking-[0.2em] text-white/30 mb-12 font-medium">
-          Trusted by leading companies worldwide
+          {t("clients.title")}
         </p>
 
         {/* Logo Scroll Container */}

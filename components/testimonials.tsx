@@ -2,85 +2,47 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import { useLanguage } from "@/lib/i18n"
 
-const testimonials = [
-  {
-    quote:
-      "We've worked with the 3035TECH team for several years on different projects and it's been great. We love having their developers embedded in our team, learning exactly as our internal developers and contributing just as much.",
-    author: "Brandon Klotz",
-    title: "Engineering Manager, ClickFunnels",
-  },
-  {
-    quote:
-      "Working with 3035TECH has been great. The team understood our challenges very quickly and got the project moving. They put our minds at ease about the software development process. Since this project directly impacts our customers, it was great that they could be there to support them. The integration has been a huge success for our team and clients.",
-    author: "Brian Dennis",
-    title: "Co-founder, The Fruit People",
-  },
-  {
-    quote:
-      "We have never been so well served by a vendor, regardless of the industry. Your service culture is very similar to how we serve our own clients. Excellence in service has always been a priority here, and we see that you operate the same way.",
-    author: "Maurício Pires",
-    title: "CEO, GoMoney & 21Mobile",
-  },
-  {
-    quote:
-      "There's never a bad time with the 3035TECH team — if there's a scope change on the client side, they always find a way to include it in the delivery. Another key point is that the project team doesn't just take requirements and start developing. They ask questions and make us think.",
-    author: "Eduardo Viegas",
-    title: "CTO, Fraxy",
-  },
-  {
-    quote:
-      "The 3035TECH team is highly committed. Whenever we need to develop new features and our development queue is full, they're the first choice. All the work delivered has performed excellently with no maintenance required.",
-    author: "Paulo Deitos Filho",
-    title: "Co-founder, CapTable/StartSe | CapRate | TEDx Speaker",
-  },
-  {
-    quote:
-      "We've been clients of 3035TECH for some time and I highly recommend them. We've created and developed several products and services together. As a startup, the sense of urgency is essential — and it's something we've always been able to count on. A perfect combination of quality with agility in delivery.",
-    author: "Hugo Ferreira",
-    title: "Co-founder, Finplace",
-  },
-  {
-    quote:
-      "We have had an excellent experience with the services provided by 3035TECH. The quality of service is remarkable, always delivered with great agility and efficiency. I highly recommend them for their level of excellence and speed in supporting our needs.",
-    author: "Igor Silva",
-    title: "Technology Manager, Grupo Caburé",
-  },
-  {
-    quote:
-      "For us at Karsten Digital, 3035TECH is more than a vendor — they're a partner truly engaged with our business needs. We count on a 3035TECH team that is 100% dedicated to our Digital Products Squad, but the company's commitment goes far beyond that team's deliveries, always seeking to place professionals with the technical and behavioral profiles we expect. Whenever we face challenges outside the squad's scope, we promptly receive help for a very productive collaboration.",
-    author: "Fabio Sano",
-    title: "Digital Products Manager, Karsten",
-  },
+const testimonialKeys = [
+  { quoteKey: "testimonials.1.quote", author: "Brandon Klotz", titleKey: "testimonials.1.title" },
+  { quoteKey: "testimonials.2.quote", author: "Brian Dennis", titleKey: "testimonials.2.title" },
+  { quoteKey: "testimonials.3.quote", author: "Maurício Pires", titleKey: "testimonials.3.title" },
+  { quoteKey: "testimonials.4.quote", author: "Eduardo Viegas", titleKey: "testimonials.4.title" },
+  { quoteKey: "testimonials.5.quote", author: "Paulo Deitos Filho", titleKey: "testimonials.5.title" },
+  { quoteKey: "testimonials.6.quote", author: "Hugo Ferreira", titleKey: "testimonials.6.title" },
+  { quoteKey: "testimonials.7.quote", author: "Igor Silva", titleKey: "testimonials.7.title" },
+  { quoteKey: "testimonials.8.quote", author: "Fabio Sano", titleKey: "testimonials.8.title" },
 ]
 
 export function Testimonials() {
   const [current, setCurrent] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     if (isPaused) return
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length)
+      setCurrent((prev) => (prev + 1) % testimonialKeys.length)
     }, 6000)
     return () => clearInterval(interval)
   }, [isPaused])
 
   const goToPrevious = () => {
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrent((prev) => (prev - 1 + testimonialKeys.length) % testimonialKeys.length)
   }
 
   const goToNext = () => {
-    setCurrent((prev) => (prev + 1) % testimonials.length)
+    setCurrent((prev) => (prev + 1) % testimonialKeys.length)
   }
-
+  
   return (
     <section className="bg-off-white py-24 sm:py-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Tag */}
         <div className="text-center mb-12">
           <span className="text-brand-purple text-sm font-bold uppercase tracking-[0.15em]">
-            What Our Clients Say
+            {t("testimonials.label")}
           </span>
         </div>
 
@@ -96,15 +58,15 @@ export function Testimonials() {
           {/* Testimonial Content */}
           <div className="text-center px-4 sm:px-12 min-h-[280px] sm:min-h-[240px] flex flex-col justify-center">
             <blockquote className="text-xl sm:text-2xl text-navy-dark leading-relaxed font-serif">
-              &ldquo;{testimonials[current].quote}&rdquo;
+              &ldquo;{t(testimonialKeys[current].quoteKey)}&rdquo;
             </blockquote>
 
             <div className="mt-8">
               <p className="text-navy-dark font-medium">
-                {testimonials[current].author}
+                {testimonialKeys[current].author}
               </p>
               <p className="text-text-body-light text-sm">
-                {testimonials[current].title}
+                {t(testimonialKeys[current].titleKey)}
               </p>
             </div>
           </div>
@@ -121,7 +83,7 @@ export function Testimonials() {
 
             {/* Dots */}
             <div className="flex gap-2">
-              {testimonials.map((_, index) => (
+              {testimonialKeys.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrent(index)}

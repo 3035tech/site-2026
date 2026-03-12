@@ -4,13 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-const stats = [
-  { value: "10+", label: "Years Delivering" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "4", label: "Countries Served" },
-  { value: "5", label: "3035TEACH Editions" },
-]
+import { useLanguage } from "@/lib/i18n"
 
 function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: string }) {
   const [count, setCount] = useState(0)
@@ -48,6 +42,15 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
 }
 
 export function Hero() {
+  const { t } = useLanguage()
+  
+  const stats = [
+    { value: "10+", label: t("hero.stats.years") },
+    { value: "50+", label: "Projects Delivered" },
+    { value: "4", label: t("hero.stats.countries") },
+    { value: "5", label: "3035TEACH Editions" },
+  ]
+
   return (
     <section className="relative min-h-screen bg-navy-dark overflow-hidden">
       {/* Background Effects */}
@@ -65,7 +68,7 @@ export function Hero() {
           {/* Badge */}
           <div className="animate-fade-up">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase bg-brand-purple/[0.08] border border-brand-purple/[0.15] text-brand-purple-light">
-              Your LATAM Technology Partner · Brazil · USA · Ireland · Germany
+              {t("hero.badge")}
             </span>
           </div>
 
@@ -78,8 +81,7 @@ export function Hero() {
 
           {/* Subheadline */}
           <p className="mt-6 text-lg sm:text-xl text-white/55 max-w-2xl leading-relaxed animate-fade-up animation-delay-200">
-            Your global technology partner that builds dedicated teams, scalable
-            products, and strategic solutions for enterprises across industries.
+            {t("hero.subtitle")}
           </p>
 
           {/* CTAs */}
@@ -90,7 +92,7 @@ export function Hero() {
               className="bg-brand-purple hover:bg-brand-purple-hover text-white rounded-xl px-8 py-6 text-base font-medium hover:shadow-[0_8px_30px_rgba(124,58,237,0.25)] transition-all duration-200"
             >
               <Link href="#contact">
-                Start a Conversation
+                {t("hero.cta.primary")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -100,7 +102,7 @@ export function Hero() {
               size="lg"
               className="bg-transparent border-white/15 text-white hover:bg-white/5 hover:text-white rounded-xl px-8 py-6 text-base font-medium transition-all duration-200"
             >
-              <Link href="#cases">View Our Work</Link>
+              <Link href="#cases">{t("hero.cta.secondary")}</Link>
             </Button>
           </div>
         </div>

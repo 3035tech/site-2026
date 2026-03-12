@@ -3,8 +3,11 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/i18n"
 
 export function Contact() {
+  const { t } = useLanguage()
+  
   return (
     <section id="contact" className="relative bg-navy-dark py-24 sm:py-32">
       {/* Background Glow */}
@@ -19,14 +22,13 @@ export function Contact() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Headline */}
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight">
-          {"Let's build something"}{" "}
-          <span className="italic gradient-text">remarkable</span>.
+          {t("contact.title")}{" "}
+          <span className="italic gradient-text">{t("contact.titleHighlight")}</span>
         </h2>
 
         {/* Subtext */}
         <p className="mt-6 text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-          Whether you need a dedicated team, expert augmentation, or a technology
-          partner to bring your vision to life — we&apos;d love to hear from you.
+          {t("contact.subtitle")}
         </p>
 
         {/* CTAs */}
@@ -61,8 +63,20 @@ export function Contact() {
         {/* Contact Details */}
         <div className="mt-16 pt-8 border-t border-white/[0.06]">
           <div className="flex flex-wrap justify-center gap-8 text-sm text-white/40">
-            <span>(+55) 51 99644-2104</span>
-            <span>Hub 5796, Campo Bom — Brazil</span>
+            <Link
+              href="tel:+5551996442104"
+              className="hover:text-brand-purple-light transition-colors"
+            >
+              (+55) 51 99644-2104
+            </Link>
+            <Link
+              href="https://www.google.com/maps/search/?api=1&query=Hub+5796+Campo+Bom+RS+Brazil"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-purple-light transition-colors"
+            >
+              Hub 5796, Campo Bom — Brazil
+            </Link>
             <Link
               href="https://linkedin.com/company/3035-tech"
               target="_blank"

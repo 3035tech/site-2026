@@ -1,55 +1,47 @@
 "use client"
 
-const services = [
-  {
-    number: "01",
-    title: "Managed Squads",
-    description:
-      "High-performing squads that combine engineering, strategy, and autonomy to accelerate digital delivery. We assemble and lead end-to-end teams that unlock bottlenecks, shorten go-to-market cycles, and deliver scalable solutions aligned with your business outcomes.",
-    highlights: ["End-to-end ownership", "Agile delivery", "Aligned to your roadmap"],
-  },
-  {
-    number: "02",
-    title: "Staff Augmentation",
-    description:
-      "Expand your tech capabilities with expert professionals fully integrated into your team. We help you evolve complex systems and accelerate key initiatives without compromising governance, speed, or quality.",
-    highlights: ["Seamless integration", "Expert-level talent", "Flexible scaling"],
-  },
-  {
-    number: "03",
-    title: "Software Development",
-    description:
-      "From ideation to deployment, we architect and build custom platforms, applications, and integrations designed for scale. Web, mobile, API ecosystems, and cloud-native solutions tailored to your business challenges.",
-    highlights: [
-      "Custom platforms & applications",
-      "API ecosystems & integrations",
-      "Cloud-native architecture",
-    ],
-  },
-  {
-    number: "04",
-    title: "Support & Evolution",
-    description:
-      "Ongoing maintenance, support, and continuous product evolution. We keep your systems running at peak performance while evolving features based on business needs and user feedback.",
-    highlights: [
-      "Ongoing maintenance & monitoring",
-      "Continuous product improvement",
-      "Long-term partnership",
-    ],
-  },
-]
+import { useLanguage } from "@/lib/i18n"
 
 export function Services() {
+  const { t } = useLanguage()
+  
+  const services = [
+    {
+      number: "01",
+      titleKey: "services.managedSquads.title",
+      descKey: "services.managedSquads.desc",
+      highlightKeys: ["services.managedSquads.h1", "services.managedSquads.h2", "services.managedSquads.h3"],
+    },
+    {
+      number: "02",
+      titleKey: "services.staffAug.title",
+      descKey: "services.staffAug.desc",
+      highlightKeys: ["services.staffAug.h1", "services.staffAug.h2", "services.staffAug.h3"],
+    },
+    {
+      number: "03",
+      titleKey: "services.customDev.title",
+      descKey: "services.customDev.desc",
+      highlightKeys: ["services.customDev.h1", "services.customDev.h2", "services.customDev.h3"],
+    },
+    {
+      number: "04",
+      titleKey: "services.support.title",
+      descKey: "services.support.desc",
+      highlightKeys: ["services.support.h1", "services.support.h2", "services.support.h3"],
+    },
+  ]
+  
   return (
     <section id="services" className="bg-white py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mb-16">
           <span className="text-brand-purple text-sm font-bold uppercase tracking-[0.15em]">
-            What We Do
+            {t("services.label")}
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-serif text-navy-dark leading-tight text-balance">
-            Solutions tailored to your business challenges
+            {t("services.title")}
           </h2>
         </div>
 
@@ -67,22 +59,22 @@ export function Services() {
 
               {/* Title */}
               <h3 className="mt-4 text-2xl sm:text-3xl font-serif text-navy-dark group-hover:text-white transition-colors duration-500">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
 
               {/* Description */}
               <p className="mt-4 text-text-body-light group-hover:text-white/55 leading-relaxed transition-colors duration-500">
-                {service.description}
+                {t(service.descKey)}
               </p>
 
               {/* Highlights */}
               <div className="mt-6 flex flex-wrap gap-2">
-                {service.highlights.map((highlight) => (
+                {service.highlightKeys.map((highlightKey) => (
                   <span
-                    key={highlight}
+                    key={highlightKey}
                     className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-off-white text-text-body-light group-hover:bg-white/10 group-hover:text-white/70 transition-colors duration-500"
                   >
-                    {highlight}
+                    {t(highlightKey)}
                   </span>
                 ))}
               </div>
