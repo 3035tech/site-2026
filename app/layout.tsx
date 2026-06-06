@@ -8,10 +8,14 @@ export const metadata: Metadata = {
     template: '%s | 3035TECH',
   },
   description:
-    'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide. Offices in Brazil, USA, Ireland, and Germany.',
+    'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide. European hub in Dublin, Ireland.',
   keywords: [
     '3035TECH',
-    'software development',
+    '3035TECH Ireland',
+    '3035TECH Dublin',
+    '3035 Tech Ireland',
+    'software development Ireland',
+    'technology partner Dublin',
     'staff augmentation',
     'managed squads',
     'outsourcing',

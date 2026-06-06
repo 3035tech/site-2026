@@ -178,6 +178,16 @@ export function getStaticPageMeta(locale: Locale) {
       title: t('contact.label'),
       description: t('contact.subtitle'),
     },
+    privacy: {
+      path: '/privacy',
+      title: t('privacy.metaTitle'),
+      description: t('privacy.metaDescription'),
+    },
+    ireland: {
+      path: '/ireland',
+      title: t('ireland.metaTitle'),
+      description: t('ireland.metaDescription'),
+    },
     servicesIndex: {
       path: '/services',
       title: t('services.label'),
@@ -202,6 +212,8 @@ const basePaths = [
   '/about',
   '/3035teach',
   '/contact',
+  '/privacy',
+  '/ireland',
   ...serviceDefs.map((s) => `/services/${s.slug}`),
   ...caseStudyDefs.map((c) => `/case-studies/${c.slug}`),
 ]

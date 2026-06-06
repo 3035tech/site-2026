@@ -25,10 +25,16 @@ export function GaAnalytics() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
             window.gtag = window.gtag || gtag;
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              wait_for_update: 500
+            });
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}', {
-              send_page_view: true,
-              page_path: '/'
+              send_page_view: false
             });
           `,
         }}
@@ -36,4 +42,3 @@ export function GaAnalytics() {
     </>
   )
 }
-

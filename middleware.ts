@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import {
   defaultLocale,
   isValidLocale,
-  locales,
   type Locale,
 } from '@/lib/i18n/config'
 
@@ -33,6 +32,10 @@ export function middleware(request: NextRequest) {
     pathname === '/feed.xml' ||
     pathname === '/og' ||
     pathname === '/opengraph-image' ||
+    pathname === '/icon' ||
+    pathname.startsWith('/icon?') ||
+    pathname === '/apple-icon' ||
+    pathname.startsWith('/apple-icon?') ||
     pathname.includes('.')
   ) {
     return NextResponse.next()

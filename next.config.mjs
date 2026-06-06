@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   async redirects() {
     return [
+      {
+        source: '/dublin',
+        destination: '/en/ireland',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: '3035tech.com' }],

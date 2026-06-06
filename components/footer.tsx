@@ -27,6 +27,12 @@ export function Footer() {
             <LocaleLink href="/blog" className={footerLinkClass}>
               {t("blog.label")}
             </LocaleLink>
+            <LocaleLink href="/privacy" className={footerLinkClass}>
+              {t("footer.privacy")}
+            </LocaleLink>
+            <LocaleLink href="/ireland" className={footerLinkClass}>
+              {t("ireland.label")}
+            </LocaleLink>
             <Link
               href="https://linkedin.com/company/3035-tech"
               target="_blank"

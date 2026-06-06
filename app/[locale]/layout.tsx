@@ -1,7 +1,5 @@
 import { notFound } from 'next/navigation'
 import { DM_Sans, Instrument_Serif } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { GaAnalytics } from '@/components/ga-analytics'
 import { Providers } from '@/components/providers'
 import { StructuredData } from '@/components/structured-data'
 import { htmlLangMap, isValidLocale, locales, type Locale } from '@/lib/i18n/config'
@@ -49,8 +47,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           <StructuredData locale={locale} />
           {children}
         </Providers>
-        <Analytics />
-        <GaAnalytics />
       </body>
     </html>
   )

@@ -13,6 +13,14 @@ import {
 import { contactEmail, organizationPhone, supportLanguages } from '@/lib/contact'
 import { getBlogPosts } from '@/lib/blog-data'
 import { htmlLangMap, type Locale } from '@/lib/i18n/config'
+import {
+  dublinMapsUrl,
+  europeHubAddress,
+  headquartersAddress,
+  organizationLocations,
+} from '@/lib/org-locations'
+import { irelandHubPath } from '@/lib/ireland-seo'
+import { translations } from '@/lib/i18n/translations'
 
 export function StructuredData({ locale }: { locale: Locale }) {
   const servicePages = getServicePages(locale)
@@ -29,28 +37,33 @@ export function StructuredData({ locale }: { locale: Locale }) {
     url: homeUrl,
     logo: `${siteUrl}${brandLogo.src}`,
     description:
-      'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide.',
+      'Global technology partner headquartered in Brazil with a European hub in Dublin, Ireland. Managed squads, staff augmentation, and custom software development for enterprises worldwide.',
     foundingDate: '2015',
     sameAs: [
       'https://www.linkedin.com/company/3035tech',
       'https://github.com/3035tech',
       'https://instagram.com/3035.tech',
     ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Hub 5796',
-      addressLocality: 'Campo Bom',
-      addressRegion: 'RS',
-      addressCountry: 'BR',
-    },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'sales',
-      email: contactEmail,
-      telephone: organizationPhone,
-      availableLanguage: [...supportLanguages],
-      areaServed: 'Worldwide',
-    },
+    address: headquartersAddress,
+    location: organizationLocations,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: contactEmail,
+        telephone: organizationPhone,
+        availableLanguage: [...supportLanguages],
+        areaServed: 'Worldwide',
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: contactEmail,
+        telephone: organizationPhone,
+        availableLanguage: ['English', 'Portuguese'],
+        areaServed: ['IE', 'EU', 'GB'],
+      },
+    ],
     areaServed: 'Worldwide',
     knowsAbout: [
       'Software Development',
@@ -63,6 +76,9 @@ export function StructuredData({ locale }: { locale: Locale }) {
       'Web Development',
       'Cloud Solutions',
       'Enterprise Software',
+      'Software Development Ireland',
+      'Technology Partner Dublin',
+      'European Software Delivery',
     ],
   }
 
@@ -85,13 +101,8 @@ export function StructuredData({ locale }: { locale: Locale }) {
     telephone: organizationPhone,
     email: contactEmail,
     priceRange: '$$$$',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Hub 5796',
-      addressLocality: 'Campo Bom',
-      addressRegion: 'RS',
-      addressCountry: 'BR',
-    },
+    address: headquartersAddress,
+    location: organizationLocations,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Software Development Services',
@@ -114,19 +125,12 @@ export function StructuredData({ locale }: { locale: Locale }) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${siteUrl}/#localbusiness`,
-    name: '3035TECH',
+    name: '3035TECH — Campo Bom',
     image: `${siteUrl}${brandLogo.src}`,
     url: homeUrl,
     telephone: organizationPhone,
     email: contactEmail,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Hub 5796',
-      addressLocality: 'Campo Bom',
-      addressRegion: 'RS',
-      postalCode: '93700-000',
-      addressCountry: 'BR',
-    },
+    address: headquartersAddress,
     geo: {
       '@type': 'GeoCoordinates',
       latitude: -29.6784,
@@ -140,6 +144,44 @@ export function StructuredData({ locale }: { locale: Locale }) {
     },
     priceRange: '$$$$',
     areaServed: 'Worldwide',
+  }
+
+  const europeHubSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${siteUrl}/#localbusiness-dublin`,
+    name: '3035TECH — Dublin, Ireland',
+    alternateName: ['3035TECH Ireland', '3035 Tech Dublin', '3035TECH European Hub'],
+    description:
+      'European projects and commercial hub in Dublin, Ireland — project coordination and commercial engagement for Irish, EU, and UK clients.',
+    image: `${siteUrl}${brandLogo.src}`,
+    url: pageUrl(locale, irelandHubPath),
+    telephone: organizationPhone,
+    email: contactEmail,
+    address: europeHubAddress,
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 53.3498,
+      longitude: -6.2603,
+    },
+    hasMap: dublinMapsUrl,
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:30',
+    },
+    parentOrganization: {
+      '@type': 'Organization',
+      name: '3035TECH',
+      url: homeUrl,
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'Ireland' },
+      { '@type': 'AdministrativeArea', name: 'Dublin' },
+      'European Union',
+      'United Kingdom',
+    ],
   }
 
   const educationalOrgSchema = {
@@ -207,12 +249,18 @@ export function StructuredData({ locale }: { locale: Locale }) {
       {
         '@type': 'SiteNavigationElement',
         position: servicePages.length + 5,
+        name: translations[locale]['ireland.label'] ?? 'Ireland & Dublin',
+        url: pageUrl(locale, irelandHubPath),
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: servicePages.length + 6,
         name: 'Contact',
         url: pageUrl(locale, staticPageMeta.contact.path),
       },
       {
         '@type': 'SiteNavigationElement',
-        position: servicePages.length + 6,
+        position: servicePages.length + 7,
         name: 'Insights',
         url: pageUrl(locale, '/blog'),
       },
@@ -266,6 +314,7 @@ export function StructuredData({ locale }: { locale: Locale }) {
     organizationSchema,
     websiteSchema,
     localBusinessSchema,
+    europeHubSchema,
     professionalServiceSchema,
     educationalOrgSchema,
     siteNavigationSchema,

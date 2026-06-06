@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return createPageMetadata({
     locale,
     title: { absolute: '3035TECH — Your LATAM Technology Partner' },
-    description: t['hero.subtitle'],
+    description: t['home.metaDescription'] ?? t['hero.subtitle'],
     path: '/',
     ogLabel: 'LATAM Technology Partner',
   })

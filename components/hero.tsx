@@ -14,34 +14,37 @@ function AnimatedCounter({
   suffix?: string
 }) {
   const numericTarget = parseInt(target.replace(/\D/g, "")) || 0
-  const [mounted, setMounted] = useState(false)
   const [count, setCount] = useState(numericTarget)
 
   useEffect(() => {
-    setMounted(true)
-    setCount(0)
-
     const duration = 2000
     const steps = 60
     const increment = numericTarget / steps
     let current = 0
+    let timer: ReturnType<typeof setInterval>
 
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= numericTarget) {
-        setCount(numericTarget)
-        clearInterval(timer)
-      } else {
-        setCount(Math.floor(current))
-      }
-    }, duration / steps)
+    const frame = requestAnimationFrame(() => {
+      setCount(0)
+      timer = setInterval(() => {
+        current += increment
+        if (current >= numericTarget) {
+          setCount(numericTarget)
+          clearInterval(timer)
+        } else {
+          setCount(Math.floor(current))
+        }
+      }, duration / steps)
+    })
 
-    return () => clearInterval(timer)
+    return () => {
+      cancelAnimationFrame(frame)
+      clearInterval(timer)
+    }
   }, [numericTarget])
 
   return (
     <span suppressHydrationWarning>
-      {mounted ? count : numericTarget}
+      {count}
       {suffix}
     </span>
   )

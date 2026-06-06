@@ -77,7 +77,13 @@ Documento de referência para alterações futuras no site.
 | `lib/seo-data.ts` | FAQ schema (`FAQ_COUNT`), conteúdo estático para LLMs legado |
 
 ### FAQ schema
-- **`FAQ_COUNT = 11`** em `components/faq.tsx` **e** `lib/seo-data.ts`
+- **`FAQ_COUNT = 13`** em `components/faq.tsx` **e** `lib/seo-data.ts`
+- FAQ **12–13** cobrem presença em Dublin/Irlanda
+
+### Hub Irlanda (SEO local)
+- Página **`/[locale]/ireland`** — conteúdo, FAQ dedicado, schema LocalBusiness Dublin
+- Redirect **`/dublin` → `/en/ireland`**
+- Links internos: footer, About (bloco Europa), contact
 - Ao adicionar/remover FAQ, atualizar **ambos** + chaves `faq.N.q` / `faq.N.a` nos **4 idiomas** em `lib/i18n/translations.ts`
 
 ### Blog — indexação

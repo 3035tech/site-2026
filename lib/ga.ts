@@ -7,6 +7,30 @@ type GAEventParams = {
   value?: number
 }
 
+export function updateAnalyticsConsent(granted: boolean) {
+  if (typeof window === 'undefined') return
+
+  const w = window as typeof window & {
+    gtag?: (...args: unknown[]) => void
+  }
+
+  if (!w.gtag) return
+
+  w.gtag('consent', 'update', {
+    analytics_storage: granted ? 'granted' : 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+  })
+
+  if (granted) {
+    w.gtag('config', GA_MEASUREMENT_ID, {
+      send_page_view: true,
+    })
+    w.gtag('event', 'page_view')
+  }
+}
+
 export function trackEvent({ action, category, label, value }: GAEventParams) {
   if (typeof window === "undefined") return
 

@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ContactForm } from "@/components/contact-form"
+import { LocaleLink } from "@/components/locale-link"
 import { useLanguage } from "@/lib/i18n"
 import {
   contactEmail,
@@ -42,8 +44,12 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
           </>
         )}
 
+        <ContactForm />
+
+        <p className="mt-10 text-sm text-white/40">{t("contact.form.orDirect")}</p>
+
         {/* CTAs */}
-        <div className={`flex flex-col sm:flex-row justify-center gap-4 ${hideHeader ? "" : "mt-10"}`}>
+        <div className={`flex flex-col sm:flex-row justify-center gap-4 mt-6`}>
           <Button
             asChild
             size="lg"
@@ -102,6 +108,12 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
             >
               Hub 5796, Campo Bom — Brazil
             </Link>
+            <LocaleLink
+              href="/ireland"
+              className="hover:text-brand-purple-light transition-colors"
+            >
+              Dublin, Ireland — European hub
+            </LocaleLink>
             <Link
               href="https://linkedin.com/company/3035-tech"
               target="_blank"

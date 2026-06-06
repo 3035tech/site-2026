@@ -34,8 +34,16 @@ export function generateLlmsTxt(): string {
 ## About
 3035TECH helps enterprises scale engineering through dedicated teams and custom software. Founded in 2015, headquartered in Campo Bom, RS, Brazil (Hub 5796) with operations in the USA, Ireland (European projects & commercial hub, Dublin), and Germany.
 
+## Ireland & Dublin (European Hub)
+3035TECH operates a European projects and commercial hub in Dublin, Ireland — local point of contact for Irish and EU/UK clients.
+- Ireland hub page: ${url('en', '/ireland')}
+- Dublin LocalBusiness schema on site-wide JSON-LD
+- Case studies in Dublin: LunchTeam, The Fruit People
+- Insight: ${url('en', '/blog/european-software-delivery-from-ireland')}
+
 ## Key Pages
 - Home: ${url('en', '/')}
+- Ireland & Dublin: ${url('en', '/ireland')}
 - Services: ${url('en', '/services')}
 - Case Studies: ${url('en', '/case-studies')}
 - Insights (Blog): ${url('en', '/blog')}

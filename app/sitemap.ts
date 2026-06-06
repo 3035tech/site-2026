@@ -12,6 +12,8 @@ const basePaths = [
   '/about',
   '/3035teach',
   '/contact',
+  '/privacy',
+  '/ireland',
   '/blog',
   ...serviceSlugs.map((slug) => `/services/${slug}`),
   ...caseStudySlugs.map((slug) => `/case-studies/${slug}`),
@@ -29,6 +31,7 @@ function lastModifiedForPath(path: string): Date {
 
 function priorityForPath(path: string): number {
   if (path === '/') return 1
+  if (path === '/ireland') return 0.92
   if (path === '/blog') return 0.85
   if (path.split('/').length <= 2) return 0.9
   return 0.8

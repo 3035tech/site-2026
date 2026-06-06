@@ -11,6 +11,7 @@ import {
 import { brandLogo } from '@/lib/images'
 import { siteUrl } from '@/lib/site'
 import { InnerPageHero, PageCta, SiteShell } from '@/components/site-shell'
+import { LinkedCompanyText } from '@/components/linked-company-text'
 import { getLocaleOrDefault } from '@/lib/i18n/server'
 import { locales, localizedPath, type Locale } from '@/lib/i18n/config'
 import { buildBreadcrumbs } from '@/lib/breadcrumbs'
@@ -125,7 +126,7 @@ export default async function BlogPostPage({ params }: Props) {
                       key={pIndex}
                       className="text-text-body-light leading-relaxed text-base sm:text-lg"
                     >
-                      {paragraph}
+                      <LinkedCompanyText text={paragraph} />
                     </p>
                   ))}
                 </div>

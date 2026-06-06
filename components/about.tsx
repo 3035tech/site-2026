@@ -1,6 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/i18n"
+import { LocaleLink } from "@/components/locale-link"
 import { SectionHeader } from "@/components/section-header"
 
 const flagEmoji: Record<string, string> = {
@@ -88,6 +89,12 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
           <p className="mt-4 text-text-body-light leading-relaxed max-w-3xl">
             {t("about.europe.desc")}
           </p>
+          <LocaleLink
+            href="/ireland"
+            className="inline-flex mt-6 text-sm font-medium text-brand-purple hover:text-brand-purple-hover transition-colors"
+          >
+            {t("ireland.label")} →
+          </LocaleLink>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
-const FAQ_COUNT = 11
+const FAQ_COUNT = 13
 
 export function Faq() {
   const { t } = useLanguage()

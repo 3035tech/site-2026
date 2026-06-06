@@ -68,7 +68,7 @@ export function createPageMetadata({
       languages: buildAlternateLanguages(normalizedPath),
     },
     openGraph: {
-      title,
+      title: metadataTitleToString(title),
       description,
       url,
       type: 'website',
@@ -78,7 +78,7 @@ export function createPageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: metadataTitleToString(title),
       description,
       images: images.map((img) => img.url),
     },
