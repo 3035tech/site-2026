@@ -9,7 +9,7 @@ export type ClientLink = {
 export const clientLinks: ClientLink[] = [
   ...clientLogos.map(({ name, url }) => ({ name, url })),
   { name: 'Arezzo / AZZAS 2154', url: 'https://www.arezzo.com.br' },
-  { name: 'DrAnjo', url: 'https://dranjo.com.br' },
+  { name: 'DrAnjo', url: 'https://lp2.dranjo.com.br/' },
 ].sort((a, b) => b.name.length - a.name.length)
 
 function escapeRegExp(value: string) {
