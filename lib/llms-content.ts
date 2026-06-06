@@ -32,7 +32,7 @@ export function generateLlmsTxt(): string {
 > Global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software for enterprises worldwide.
 
 ## About
-3035TECH helps enterprises scale engineering through dedicated teams and custom software. Founded in 2015, headquartered in Campo Bom, RS, Brazil (Hub 5796) with operations in the USA, Ireland, and Germany.
+3035TECH helps enterprises scale engineering through dedicated teams and custom software. Founded in 2015, headquartered in Campo Bom, RS, Brazil (Hub 5796) with operations in the USA, Ireland (European projects & commercial hub, Dublin), and Germany.
 
 ## Key Pages
 - Home: ${url('en', '/')}

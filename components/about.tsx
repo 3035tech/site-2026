@@ -68,6 +68,18 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
             ))}
           </div>
         </div>
+
+        <div className="mt-12 rounded-2xl border border-brand-purple/15 bg-off-white p-6 sm:p-8 lg:p-10">
+          <span className="text-brand-purple text-xs font-bold uppercase tracking-[0.15em]">
+            {t("about.europe.label")}
+          </span>
+          <h3 className="mt-3 text-xl sm:text-2xl font-serif text-navy-dark text-balance">
+            {t("about.europe.title")}
+          </h3>
+          <p className="mt-4 text-text-body-light leading-relaxed max-w-3xl">
+            {t("about.europe.desc")}
+          </p>
+        </div>
       </div>
     </section>
   )
