@@ -1,19 +1,26 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { LocaleLink } from "@/components/locale-link"
 import { useLanguage } from "@/lib/i18n"
 
-function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: string }) {
-  const [count, setCount] = useState(0)
-  const [hasAnimated, setHasAnimated] = useState(false)
+function AnimatedCounter({
+  target,
+  suffix = "",
+}: {
+  target: string
+  suffix?: string
+}) {
   const numericTarget = parseInt(target.replace(/\D/g, "")) || 0
+  const [mounted, setMounted] = useState(false)
+  const [count, setCount] = useState(numericTarget)
 
   useEffect(() => {
-    if (hasAnimated) return
-    
+    setMounted(true)
+    setCount(0)
+
     const duration = 2000
     const steps = 60
     const increment = numericTarget / steps
@@ -23,7 +30,6 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
       current += increment
       if (current >= numericTarget) {
         setCount(numericTarget)
-        setHasAnimated(true)
         clearInterval(timer)
       } else {
         setCount(Math.floor(current))
@@ -31,11 +37,11 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
     }, duration / steps)
 
     return () => clearInterval(timer)
-  }, [numericTarget, hasAnimated])
+  }, [numericTarget])
 
   return (
-    <span>
-      {count}
+    <span suppressHydrationWarning>
+      {mounted ? count : numericTarget}
       {suffix}
     </span>
   )
@@ -43,12 +49,12 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
 
 export function Hero() {
   const { t } = useLanguage()
-  
+
   const stats = [
     { value: "10+", label: t("hero.stats.years") },
-    { value: "50+", label: "Projects Delivered" },
+    { value: "50+", label: t("hero.stats.projects") },
     { value: "4", label: t("hero.stats.countries") },
-    { value: "5", label: "3035TEACH Editions" },
+    { value: "5", label: t("hero.stats.teachEditions") },
   ]
 
   return (
@@ -67,16 +73,16 @@ export function Hero() {
         <div className="max-w-4xl">
           {/* Badge */}
           <div className="animate-fade-up">
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase bg-brand-purple/[0.08] border border-brand-purple/[0.15] text-brand-purple-light">
+            <span className="inline-flex items-center px-4 py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-brand-purple/[0.08] border border-brand-purple/[0.15] text-brand-purple-light max-w-full text-center leading-snug whitespace-normal">
               {t("hero.badge")}
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-7xl font-serif text-white leading-tight animate-fade-up animation-delay-100">
-            We engineer the{" "}
-            <span className="italic gradient-text">technology</span> behind your
-            business growth.
+          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-7xl font-serif text-white leading-tight animate-fade-up animation-delay-100 text-balance">
+            {t("hero.headline1")}{" "}
+            <span className="italic gradient-text">{t("hero.headlineHighlight")}</span>{" "}
+            {t("hero.headline2")}
           </h1>
 
           {/* Subheadline */}
@@ -91,10 +97,10 @@ export function Hero() {
               size="lg"
               className="bg-brand-purple hover:bg-brand-purple-hover text-white rounded-xl px-8 py-6 text-base font-medium hover:shadow-[0_8px_30px_rgba(124,58,237,0.25)] transition-all duration-200"
             >
-              <Link href="#contact">
+              <LocaleLink href="/contact">
                 {t("hero.cta.primary")}
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </LocaleLink>
             </Button>
             <Button
               asChild
@@ -102,7 +108,7 @@ export function Hero() {
               size="lg"
               className="bg-transparent border-white/15 text-white hover:bg-white/5 hover:text-white rounded-xl px-8 py-6 text-base font-medium transition-all duration-200"
             >
-              <Link href="#cases">{t("hero.cta.secondary")}</Link>
+              <LocaleLink href="/case-studies">{t("hero.cta.secondary")}</LocaleLink>
             </Button>
           </div>
         </div>

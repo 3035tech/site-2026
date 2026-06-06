@@ -1,44 +1,50 @@
 import { MetadataRoute } from 'next'
+import { blogSlugs, getBlogPost } from '@/lib/blog-data'
+import { localizedPath } from '@/lib/i18n/config'
+import { buildAlternateLanguages } from '@/lib/i18n/server'
+import { caseStudySlugs, serviceSlugs } from '@/lib/pages-data'
+import { siteUrl } from '@/lib/site'
+
+const basePaths = [
+  '/',
+  '/services',
+  '/case-studies',
+  '/about',
+  '/3035teach',
+  '/contact',
+  '/blog',
+  ...serviceSlugs.map((slug) => `/services/${slug}`),
+  ...caseStudySlugs.map((slug) => `/case-studies/${slug}`),
+  ...blogSlugs.map((slug) => `/blog/${slug}`),
+]
+
+function lastModifiedForPath(path: string): Date {
+  const blogMatch = path.match(/^\/blog\/([^/]+)$/)
+  if (blogMatch) {
+    const post = getBlogPost('en', blogMatch[1])
+    if (post) return new Date(post.publishedAt)
+  }
+  return new Date('2026-01-01')
+}
+
+function priorityForPath(path: string): number {
+  if (path === '/') return 1
+  if (path === '/blog') return 0.85
+  if (path.split('/').length <= 2) return 0.9
+  return 0.8
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://3035tech.com'
-  
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/#services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#cases`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#teach`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-  ]
+  return basePaths.map((path) => {
+    const enPath = localizedPath('en', path)
+    return {
+      url: `${siteUrl}${enPath}`,
+      lastModified: lastModifiedForPath(path),
+      changeFrequency: path === '/' ? 'weekly' : path.includes('/blog/') ? 'monthly' : 'monthly',
+      priority: priorityForPath(path),
+      alternates: {
+        languages: buildAlternateLanguages(path),
+      },
+    }
+  })
 }

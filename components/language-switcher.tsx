@@ -1,6 +1,7 @@
 "use client"
 
 import { useLanguage, Language } from "@/lib/i18n"
+import { useSwitchLocale } from "@/lib/i18n/navigation"
 import { Globe } from "lucide-react"
 import {
   DropdownMenu,
@@ -18,7 +19,8 @@ const languages: { code: Language; label: string; flag: string }[] = [
 ]
 
 export function LanguageSwitcher() {
-  const { language, setLanguage } = useLanguage()
+  const { language } = useLanguage()
+  const switchLocale = useSwitchLocale()
   
   const currentLang = languages.find(l => l.code === language) || languages[0]
 
@@ -38,7 +40,7 @@ export function LanguageSwitcher() {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code)}
+            onClick={() => switchLocale(lang.code)}
             className={`cursor-pointer text-white/70 hover:text-white hover:bg-white/10 focus:bg-white/10 focus:text-white ${
               language === lang.code ? "bg-brand-purple/20 text-brand-purple-light" : ""
             }`}

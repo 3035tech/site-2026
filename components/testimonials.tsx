@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { useLanguage } from "@/lib/i18n"
+import { SectionHeader } from "@/components/section-header"
 
 const testimonialKeys = [
   { quoteKey: "testimonials.1.quote", author: "Brandon Klotz", titleKey: "testimonials.1.title" },
@@ -35,71 +36,79 @@ export function Testimonials() {
   const goToNext = () => {
     setCurrent((prev) => (prev + 1) % testimonialKeys.length)
   }
-  
+
   return (
     <section className="bg-off-white py-24 sm:py-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Tag */}
-        <div className="text-center mb-12">
-          <span className="text-brand-purple text-sm font-bold uppercase tracking-[0.15em]">
-            {t("testimonials.label")}
-          </span>
-        </div>
+        <SectionHeader
+          label={t("testimonials.label")}
+          align="center"
+          className="mb-12"
+        />
 
-        {/* Testimonial Card */}
         <div
           className="relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Large Quote Mark */}
           <Quote className="absolute -top-4 -left-2 w-16 h-16 text-brand-purple-light/30" />
 
-          {/* Testimonial Content */}
           <div className="text-center px-4 sm:px-12 min-h-[280px] sm:min-h-[240px] flex flex-col justify-center">
-            <blockquote className="text-xl sm:text-2xl text-navy-dark leading-relaxed font-serif">
-              &ldquo;{t(testimonialKeys[current].quoteKey)}&rdquo;
-            </blockquote>
-
-            <div className="mt-8">
-              <p className="text-navy-dark font-medium">
-                {testimonialKeys[current].author}
-              </p>
-              <p className="text-text-body-light text-sm">
-                {t(testimonialKeys[current].titleKey)}
-              </p>
-            </div>
+            {testimonialKeys.map((testimonial, index) => (
+              <figure
+                key={testimonial.author}
+                aria-hidden={current !== index}
+                className={current === index ? "" : "sr-only"}
+              >
+                <blockquote className="text-xl sm:text-2xl text-navy-dark leading-relaxed font-serif">
+                  &ldquo;{t(testimonial.quoteKey)}&rdquo;
+                </blockquote>
+                <figcaption className="mt-8">
+                  <p className="text-navy-dark font-medium">{testimonial.author}</p>
+                  <p className="text-text-body-light text-sm">
+                    {t(testimonial.titleKey)}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex justify-center items-center gap-4 mt-10">
+          <div className="flex justify-center items-center gap-2 sm:gap-4 mt-10">
             <button
+              type="button"
               onClick={goToPrevious}
-              className="p-2 rounded-full border border-border hover:border-brand-purple hover:text-brand-purple transition-colors"
+              className="min-h-11 min-w-11 flex items-center justify-center rounded-full border border-border hover:border-brand-purple hover:text-brand-purple transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2" role="tablist" aria-label="Testimonials">
               {testimonialKeys.map((_, index) => (
                 <button
                   key={index}
+                  type="button"
+                  role="tab"
+                  aria-selected={current === index}
                   onClick={() => setCurrent(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    current === index
-                      ? "bg-brand-purple w-6"
-                      : "bg-text-caption-light hover:bg-text-body-light"
-                  }`}
+                  className="min-h-11 min-w-11 flex items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
                   aria-label={`Go to testimonial ${index + 1}`}
-                />
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-200 ${
+                      current === index
+                        ? "bg-brand-purple h-2 w-6"
+                        : "bg-text-caption-light hover:bg-text-body-light h-2 w-2"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
             <button
+              type="button"
               onClick={goToNext}
-              className="p-2 rounded-full border border-border hover:border-brand-purple hover:text-brand-purple transition-colors"
+              className="min-h-11 min-w-11 flex items-center justify-center rounded-full border border-border hover:border-brand-purple hover:text-brand-purple transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />

@@ -2,8 +2,9 @@
 
 import Image from "next/image"
 import { useLanguage } from "@/lib/i18n"
+import { teachAlumniLogos } from "@/lib/images"
 
-export function Teach() {
+export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
   const { t } = useLanguage()
   
   const curriculum = {
@@ -34,14 +35,14 @@ export function Teach() {
     { value: "5", labelKey: "teach.stats.editions" },
     { value: "100%", labelKey: "teach.stats.subsidized" },
     { value: "80%+", labelKey: "teach.stats.employed" },
-    { logo: "/images/logos/sap.png", labelKey: "teach.stats.sapAlumni" },
-    { logo: "/images/logos/dell.svg", labelKey: "teach.stats.dellAlumni" },
+    { logo: teachAlumniLogos[0].src, labelKey: "teach.stats.sapAlumni" },
+    { logo: teachAlumniLogos[1].src, labelKey: "teach.stats.dellAlumni" },
   ]
   
   return (
     <section
       id="teach"
-      className="relative py-24 sm:py-32 overflow-hidden"
+      className={`relative overflow-hidden ${hideHeader ? "py-12 sm:py-20" : "py-24 sm:py-32"}`}
       style={{
         background: "linear-gradient(135deg, #0F172A, #1A0B2E, #0F172A)",
       }}
@@ -59,19 +60,22 @@ export function Teach() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Column: Content */}
           <div>
-            {/* Section Badge */}
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] bg-brand-purple/10 border border-brand-purple/15 text-brand-purple">
-              {t("teach.label")}
-            </span>
+            {!hideHeader && (
+              <>
+                <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] bg-brand-purple/10 border border-brand-purple/15 text-brand-purple">
+                  {t("teach.label")}
+                </span>
+                <h2 className="mt-6 text-4xl sm:text-5xl font-serif text-white text-balance">
+                  {t("teach.title")}
+                  <span className="text-brand-purple">{t("teach.titleHighlight")}</span>
+                </h2>
+                <div className="mt-6 space-y-4 text-white/55 leading-relaxed">
+                  <p>{t("teach.desc1")}</p>
+                </div>
+              </>
+            )}
 
-            {/* Headline */}
-            <h2 className="mt-6 text-4xl sm:text-5xl font-serif text-white">
-              {t("teach.title")}<span className="text-brand-purple">{t("teach.titleHighlight")}</span>
-            </h2>
-
-            {/* Description */}
-            <div className="mt-6 space-y-4 text-white/55 leading-relaxed">
-              <p>{t("teach.desc1")}</p>
+            <div className={`space-y-4 text-white/55 leading-relaxed ${hideHeader ? "mt-0" : ""}`}>
               <p>{t("teach.desc2")}</p>
               <p>{t("teach.desc3")}</p>
             </div>
@@ -115,11 +119,11 @@ export function Teach() {
           {/* Right Column: Stats & Visual */}
           <div className="lg:sticky lg:top-32">
             {/* Large Edition Number */}
-            <div className="relative aspect-square max-w-md mx-auto mb-12">
+            <div className="relative aspect-square max-w-md mx-auto mb-12 overflow-hidden">
               <div className="absolute inset-0 rounded-full bg-brand-purple/5 border border-brand-purple/10" />
               <div className="absolute inset-4 rounded-full bg-brand-purple/5 border border-brand-purple/10" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-[180px] sm:text-[220px] font-serif text-brand-purple">
+                <span className="text-[clamp(5rem,28vw,13.75rem)] font-serif text-brand-purple leading-none">
                   5
                 </span>
               </div>
@@ -131,7 +135,7 @@ export function Teach() {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
               {stats.map((stat) => (
                 <div
                   key={stat.labelKey}
@@ -145,7 +149,6 @@ export function Teach() {
                         width={60}
                         height={32}
                         className="h-6 w-auto brightness-0 invert opacity-70"
-                        unoptimized
                       />
                     </div>
                   ) : (

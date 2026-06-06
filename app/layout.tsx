@@ -1,29 +1,14 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Instrument_Serif } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { Providers } from '@/components/providers'
-import { StructuredData } from '@/components/structured-data'
-import { GaAnalytics } from '@/components/ga-analytics'
 import './globals.css'
 
-const dmSans = DM_Sans({ 
-  subsets: ["latin"],
-  variable: '--font-dm-sans',
-})
-
-const instrumentSerif = Instrument_Serif({ 
-  subsets: ["latin"],
-  weight: "400",
-  variable: '--font-instrument-serif',
-})
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://3035tech.com'),
+  metadataBase: new URL('https://www.3035tech.com'),
   title: {
     default: '3035TECH — Your LATAM Technology Partner',
     template: '%s | 3035TECH',
   },
-  description: 'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide. Offices in Brazil, USA, Ireland, and Germany.',
+  description:
+    'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide. Offices in Brazil, USA, Ireland, and Germany.',
   keywords: [
     '3035TECH',
     'software development',
@@ -43,41 +28,30 @@ export const metadata: Metadata = {
   authors: [{ name: '3035TECH' }],
   creator: '3035TECH',
   publisher: '3035TECH',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  alternates: {
-    canonical: 'https://3035tech.com',
-    languages: {
-      'en': 'https://3035tech.com',
-      'pt-BR': 'https://3035tech.com',
-      'es': 'https://3035tech.com',
-      'de': 'https://3035tech.com',
-    },
-  },
   openGraph: {
     title: '3035TECH — Your LATAM Technology Partner',
-    description: 'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide.',
-    url: 'https://3035tech.com',
+    description:
+      'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide.',
+    url: 'https://www.3035tech.com',
     siteName: '3035TECH',
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: '3035TECH - Your LATAM Technology Partner',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: '3035TECH — Your LATAM Technology Partner',
-    description: 'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development.',
-    images: ['/images/og-image.jpg'],
+    description:
+      'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development.',
+    site: '@3035tech',
   },
   robots: {
     index: true,
@@ -91,9 +65,14 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    }),
     other: {
       'facebook-domain-verification': 's89hy8t6cay9f9yz0tw0x9sqga0uy3',
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && {
+        'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+      }),
     },
   },
 }
@@ -103,18 +82,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <html lang="en" className={`${dmSans.variable} ${instrumentSerif.variable}`}>
-      <head>
-        <StructuredData />
-      </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
-        <Providers>
-          {children}
-        </Providers>
-        <Analytics />
-        <GaAnalytics />
-      </body>
-    </html>
-  )
+  return children
 }

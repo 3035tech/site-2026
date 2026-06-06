@@ -23,19 +23,20 @@ export function useLanguage() {
 interface LanguageProviderProps {
   children: ReactNode
   translations: Record<Language, Record<string, string>>
+  initialLocale: Language
 }
 
-export function LanguageProvider({ children, translations }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>("en")
-  const [isHydrated, setIsHydrated] = useState(false)
+export function LanguageProvider({
+  children,
+  translations,
+  initialLocale,
+}: LanguageProviderProps) {
+  const [language, setLanguageState] = useState<Language>(initialLocale)
 
   useEffect(() => {
-    const stored = localStorage.getItem("language") as Language | null
-    if (stored && ["en", "es", "pt", "de"].includes(stored)) {
-      setLanguageState(stored)
-    }
-    setIsHydrated(true)
-  }, [])
+    setLanguageState(initialLocale)
+    localStorage.setItem("language", initialLocale)
+  }, [initialLocale])
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
@@ -51,9 +52,8 @@ export function LanguageProvider({ children, translations }: LanguageProviderPro
     return translation
   }
 
-  // Prevent hydration mismatch by rendering with default language until hydrated
   const value = {
-    language: isHydrated ? language : "en",
+    language,
     setLanguage,
     t,
   }

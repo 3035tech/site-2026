@@ -4,12 +4,22 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/i18n"
+import {
+  contactEmail,
+  contactMailtoUrl,
+  contactPhoneDisplayAlt,
+  contactTelUrl,
+  contactWhatsAppUrl,
+} from "@/lib/contact"
 
-export function Contact() {
+export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
   const { t } = useLanguage()
   
   return (
-    <section id="contact" className="relative bg-navy-dark py-24 sm:py-32">
+    <section
+      id="contact"
+      className={`relative bg-navy-dark ${hideHeader ? "py-12 sm:py-20" : "py-24 sm:py-32"}`}
+    >
       {/* Background Glow */}
       <div
         className="absolute inset-0"
@@ -20,26 +30,27 @@ export function Contact() {
       />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Headline */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight">
-          {t("contact.title")}{" "}
-          <span className="italic gradient-text">{t("contact.titleHighlight")}</span>
-        </h2>
-
-        {/* Subtext */}
-        <p className="mt-6 text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-          {t("contact.subtitle")}
-        </p>
+        {!hideHeader && (
+          <>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight text-balance">
+              {t("contact.title")}{" "}
+              <span className="italic gradient-text">{t("contact.titleHighlight")}</span>
+            </h2>
+            <p className="mt-6 text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+              {t("contact.subtitle")}
+            </p>
+          </>
+        )}
 
         {/* CTAs */}
-        <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+        <div className={`flex flex-col sm:flex-row justify-center gap-4 ${hideHeader ? "" : "mt-10"}`}>
           <Button
             asChild
             size="lg"
             className="bg-brand-purple hover:bg-brand-purple-hover text-white rounded-xl px-8 py-6 text-base font-medium hover:shadow-[0_8px_30px_rgba(124,58,237,0.25)] transition-all duration-200"
           >
-            <Link href="mailto:contact@3035tech.com">
-              contact@3035tech.com
+            <Link href={contactMailtoUrl}>
+              {contactEmail}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -50,11 +61,11 @@ export function Contact() {
             className="bg-transparent border-white/15 text-white hover:bg-white/5 hover:text-white rounded-xl px-8 py-6 text-base font-medium transition-all duration-200"
           >
             <Link
-              href="https://wa.me/5551996442104"
+              href={contactWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp
+              {t("contact.whatsapp")}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -62,12 +73,26 @@ export function Contact() {
 
         {/* Contact Details */}
         <div className="mt-16 pt-8 border-t border-white/[0.06]">
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-white/40">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/40">
             <Link
-              href="tel:+5551996442104"
+              href={contactMailtoUrl}
               className="hover:text-brand-purple-light transition-colors"
             >
-              (+55) 51 99644-2104
+              {contactEmail}
+            </Link>
+            <Link
+              href={contactTelUrl}
+              className="hover:text-brand-purple-light transition-colors"
+            >
+              {contactPhoneDisplayAlt}
+            </Link>
+            <Link
+              href={contactWhatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-purple-light transition-colors"
+            >
+              {t("contact.whatsapp")}
             </Link>
             <Link
               href="https://www.google.com/maps/search/?api=1&query=Hub+5796+Campo+Bom+RS+Brazil"

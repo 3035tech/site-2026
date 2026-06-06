@@ -1,6 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/i18n"
+import { SectionHeader } from "@/components/section-header"
 
 const flagEmoji: Record<string, string> = {
   BR: "🇧🇷",
@@ -16,33 +17,34 @@ const locationKeys = [
   { flag: "DE", countryKey: "about.locations.germany", descKey: "about.locations.germanyDesc" },
 ]
 
-export function About() {
+export function About({ hideHeader = false }: { hideHeader?: boolean }) {
   const { t } = useLanguage()
   
   return (
-    <section id="about" className="bg-white py-24 sm:py-32">
+    <section
+      id="about"
+      className={`bg-white ${hideHeader ? "py-12 sm:py-20" : "py-24 sm:py-32"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column: Content */}
           <div>
-            {/* Section Tag */}
-            <span className="text-brand-purple text-sm font-bold uppercase tracking-[0.15em]">
-              {t("about.label")}
-            </span>
+            {!hideHeader && (
+              <SectionHeader
+                label={t("about.label")}
+                title={
+                  <>
+                    {t("about.title")}{" "}
+                    <span className="italic gradient-text">{t("about.titleHighlight")}</span>
+                  </>
+                }
+              />
+            )}
 
-            {/* Headline */}
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-serif text-navy-dark leading-tight text-balance">
-              {t("about.title")} <span className="italic gradient-text">{t("about.titleHighlight")}</span>
-            </h2>
-
-            {/* Description */}
-            <div className="mt-6 space-y-4 text-text-body-light leading-relaxed">
-              <p>
-                {t("about.desc1")}
-              </p>
-              <p>
-                {t("about.desc2")}
-              </p>
+            <div
+              className={`space-y-4 text-text-body-light leading-relaxed ${hideHeader ? "" : "mt-6"}`}
+            >
+              {!hideHeader && <p>{t("about.desc1")}</p>}
+              <p>{t("about.desc2")}</p>
             </div>
           </div>
 
