@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import { createPageMetadata } from '@/lib/metadata'
 import {
   getServiceBySlug,
-  getServicePages,
   serviceSlugs,
 } from '@/lib/pages-data'
 import { InnerPageHero, PageCta, SiteShell } from '@/components/site-shell'
@@ -75,13 +74,39 @@ export default async function ServicePage({ params }: Props) {
             </div>
           )}
 
-          <div className="prose prose-lg max-w-none">
-            <p className="text-text-body-light leading-relaxed text-lg">
-              {service.description}
-            </p>
-          </div>
+          {service.introParagraphs.length > 0 && (
+            <div className="space-y-4 text-text-body-light leading-relaxed text-lg">
+              {service.introParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          )}
 
-          <div className="mt-10">
+          {service.sections.map((section) => (
+            <div key={section.heading} className="mt-10">
+              <h2 className="text-xl font-serif text-navy-dark mb-4">
+                {section.heading}
+              </h2>
+              <div className="space-y-4 text-text-body-light leading-relaxed text-lg">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {service.examples && (
+            <div className="mt-10 rounded-2xl bg-off-white p-8">
+              <h2 className="text-xl font-serif text-navy-dark mb-3">
+                {service.examples.title}
+              </h2>
+              <p className="text-text-body-light leading-relaxed">
+                {service.examples.paragraph}
+              </p>
+            </div>
+          )}
+
+          <div className="mt-10 pt-10 border-t border-border">
             <h2 className="text-xl font-serif text-navy-dark mb-4">
               {t['pages.whatYouGet']}
             </h2>

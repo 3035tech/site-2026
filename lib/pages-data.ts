@@ -7,10 +7,18 @@ function tr(locale: Locale) {
   return (key: string) => dict[key] ?? translations.en[key] ?? key
 }
 
+export type ServiceSection = {
+  heading: string
+  paragraphs: string[]
+}
+
 export type ServicePage = {
   slug: string
   title: string
   description: string
+  introParagraphs: string[]
+  sections: ServiceSection[]
+  examples?: { title: string; paragraph: string }
   highlights: string[]
   metaTitle: string
   metaDescription: string
@@ -54,6 +62,42 @@ const serviceDefs = [
   },
 ] as const
 
+function getServiceDetailContent(locale: Locale, key: string) {
+  const t = tr(locale)
+  const prefix = `services.${key}`
+
+  const introParagraphs = [`${prefix}.detailP1`, `${prefix}.detailP2`]
+    .map((k) => t(k))
+    .filter((p) => p && !p.startsWith('services.'))
+
+  const sections: ServiceSection[] = [
+    {
+      heading: t(`${prefix}.whenTitle`),
+      paragraphs: [`${prefix}.whenP1`, `${prefix}.whenP2`]
+        .map((k) => t(k))
+        .filter((p) => p && !p.startsWith('services.')),
+    },
+    {
+      heading: t(`${prefix}.howTitle`),
+      paragraphs: [`${prefix}.howP1`, `${prefix}.howP2`]
+        .map((k) => t(k))
+        .filter((p) => p && !p.startsWith('services.')),
+    },
+  ].filter((section) => section.paragraphs.length > 0)
+
+  const examplesTitle = t(`${prefix}.examplesTitle`)
+  const examplesP1 = t(`${prefix}.examplesP1`)
+  const examples =
+    examplesTitle &&
+    examplesP1 &&
+    !examplesTitle.startsWith('services.') &&
+    !examplesP1.startsWith('services.')
+      ? { title: examplesTitle, paragraph: examplesP1 }
+      : undefined
+
+  return { introParagraphs, sections, examples }
+}
+
 const caseStudyDefs = [
   { slug: 'arezzo', client: 'Arezzo / AZZAS 2154', key: 'arezzo', image: '/images/case-arezzo.jpg' },
   { slug: 'clickfunnels', client: 'ClickFunnels', key: 'clickfunnels', image: '/images/case-clickfunnels.jpg' },
@@ -67,19 +111,26 @@ const caseStudyDefs = [
 export function getServicePages(locale: Locale): ServicePage[] {
   const t = tr(locale)
 
-  return serviceDefs.map(({ slug, key, image }) => ({
-    slug,
-    title: t(`services.${key}.title`),
-    description: t(`services.${key}.desc`),
-    highlights: [
-      t(`services.${key}.h1`),
-      t(`services.${key}.h2`),
-      t(`services.${key}.h3`),
-    ],
-    metaTitle: t(`services.${key}.title`),
-    metaDescription: t(`services.${key}.desc`),
-    image,
-  }))
+  return serviceDefs.map(({ slug, key, image }) => {
+    const { introParagraphs, sections, examples } = getServiceDetailContent(locale, key)
+
+    return {
+      slug,
+      title: t(`services.${key}.title`),
+      description: t(`services.${key}.desc`),
+      introParagraphs,
+      sections,
+      examples,
+      highlights: [
+        t(`services.${key}.h1`),
+        t(`services.${key}.h2`),
+        t(`services.${key}.h3`),
+      ],
+      metaTitle: t(`services.${key}.title`),
+      metaDescription: t(`services.${key}.desc`),
+      image,
+    }
+  })
 }
 
 export function getCaseStudyPages(locale: Locale): CaseStudyPage[] {

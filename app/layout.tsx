@@ -28,10 +28,6 @@ export const metadata: Metadata = {
   authors: [{ name: '3035TECH' }],
   creator: '3035TECH',
   publisher: '3035TECH',
-  icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
-  },
   formatDetection: {
     email: false,
     address: false,
