@@ -70,6 +70,7 @@ export function StructuredData({ locale }: { locale: Locale }) {
       'Staff Augmentation',
       'Managed Squads',
       'Custom Software',
+      'Global Technology Partner',
       'Nearshore Development',
       'LATAM Technology',
       'Mobile Development',
@@ -88,7 +89,7 @@ export function StructuredData({ locale }: { locale: Locale }) {
     name: '3035TECH',
     url: homeUrl,
     description:
-      '3035TECH — Your LATAM Technology Partner. Managed squads, staff augmentation, and custom software development.',
+      '3035TECH — Your Global Technology Partner. Managed squads, staff augmentation, and custom software development.',
     inLanguage: htmlLangMap[locale],
   }
 

@@ -7,6 +7,7 @@ import {
   getCaseStudyBySlug,
 } from '@/lib/pages-data'
 import { InnerPageHero, PageCta, SiteShell } from '@/components/site-shell'
+import { LinkedClientName } from '@/components/linked-client-name'
 import { getLocaleOrDefault } from '@/lib/i18n/server'
 import { locales, localizedPath, type Locale } from '@/lib/i18n/config'
 import { translations } from '@/lib/i18n/translations'
@@ -49,7 +50,12 @@ export default async function CaseStudyPage({ params }: Props) {
     <SiteShell>
       <InnerPageHero
         label={t['pages.caseStudy']}
-        title={caseStudy.client}
+        title={
+          <LinkedClientName
+            name={caseStudy.client}
+            linkClassName="text-white hover:text-brand-purple-light"
+          />
+        }
         description={caseStudy.description}
         backHref={localizedPath(locale, '/case-studies')}
         backLabel={t['pages.allCaseStudies']}

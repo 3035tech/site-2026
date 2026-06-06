@@ -11,8 +11,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.letsTalk": "Let's Talk",
 
     // Hero
-    "hero.badge": "Your LATAM Technology Partner · Brazil · USA · Ireland · Germany",
-    "hero.badgeTitle": "Your LATAM Technology Partner",
+    "hero.badge": "Your Global Technology Partner · Brazil · USA · Ireland · Germany",
+    "hero.badgeTitle": "Your Global Technology Partner",
     "hero.countries.brazil": "Brazil",
     "hero.countries.usa": "USA",
     "hero.countries.ireland": "Ireland",
@@ -373,8 +373,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.letsTalk": "Hablemos",
 
     // Hero
-    "hero.badge": "Tu Socio Tecnológico en LATAM · Brasil · EE.UU. · Irlanda · Alemania",
-    "hero.badgeTitle": "Tu Socio Tecnológico en LATAM",
+    "hero.badge": "Tu Socio Tecnológico Global · Brasil · EE.UU. · Irlanda · Alemania",
+    "hero.badgeTitle": "Tu Socio Tecnológico Global",
     "hero.countries.brazil": "Brasil",
     "hero.countries.usa": "EE.UU.",
     "hero.countries.ireland": "Irlanda",
@@ -734,8 +734,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.letsTalk": "Fale Conosco",
 
     // Hero
-    "hero.badge": "Sua Parceira de Tecnologia na LATAM · Brasil · EUA · Irlanda · Alemanha",
-    "hero.badgeTitle": "Sua Parceira de Tecnologia na LATAM",
+    "hero.badge": "Sua Parceira Global de Tecnologia · Brasil · EUA · Irlanda · Alemanha",
+    "hero.badgeTitle": "Sua Parceira Global de Tecnologia",
     "hero.countries.brazil": "Brasil",
     "hero.countries.usa": "EUA",
     "hero.countries.ireland": "Irlanda",
@@ -1095,8 +1095,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.letsTalk": "Sprechen wir",
 
     // Hero
-    "hero.badge": "Ihr LATAM Technologiepartner · Brasilien · USA · Irland · Deutschland",
-    "hero.badgeTitle": "Ihr LATAM Technologiepartner",
+    "hero.badge": "Ihr globaler Technologiepartner · Brasilien · USA · Irland · Deutschland",
+    "hero.badgeTitle": "Ihr globaler Technologiepartner",
     "hero.countries.brazil": "Brasilien",
     "hero.countries.usa": "USA",
     "hero.countries.ireland": "Irland",

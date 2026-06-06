@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { LinkifiedContactText } from '@/components/linkified-contact-text'
+import { LinkedClientName } from '@/components/linked-client-name'
 import { LocaleLink } from '@/components/locale-link'
 import { SectionHeader } from '@/components/section-header'
 import {
@@ -114,21 +115,30 @@ export function IrelandHub() {
           <SectionHeader label={t('ireland.clients.label')} title={t('ireland.clients.title')} />
           <div className="mt-10 grid sm:grid-cols-2 gap-6">
             {caseStudies.map((study) => (
-              <LocaleLink
+              <div
                 key={study.slug}
-                href={`/case-studies/${study.slug}`}
                 className="group rounded-2xl border border-border p-6 hover:border-brand-purple/25 hover:shadow-md transition-all"
               >
                 <p className="text-xs uppercase tracking-wider text-brand-purple font-bold">
                   {study.location}
                 </p>
-                <h3 className="mt-2 text-xl font-serif text-navy-dark group-hover:text-brand-purple transition-colors">
-                  {study.client}
+                <h3 className="mt-2 text-xl font-serif text-navy-dark">
+                  <LinkedClientName
+                    name={study.client}
+                    linkClassName="text-navy-dark group-hover:text-brand-purple transition-colors"
+                  />
                 </h3>
                 <p className="mt-3 text-sm text-text-body-light leading-relaxed line-clamp-3">
                   {study.description}
                 </p>
-              </LocaleLink>
+                <LocaleLink
+                  href={`/case-studies/${study.slug}`}
+                  className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-brand-purple hover:text-brand-purple-hover transition-colors"
+                >
+                  {t('cases.readFull')}
+                  <ArrowRight className="h-4 w-4" />
+                </LocaleLink>
+              </div>
             ))}
           </div>
           <LocaleLink

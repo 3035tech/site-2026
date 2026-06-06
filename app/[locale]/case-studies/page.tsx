@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { createPageMetadata } from '@/lib/metadata'
 import { getCaseStudyPages, getStaticPageMeta } from '@/lib/pages-data'
+import { LinkedClientName } from '@/components/linked-client-name'
 import { InnerPageHero, PageCta, SiteShell } from '@/components/site-shell'
 import { getLocaleOrDefault } from '@/lib/i18n/server'
 import { localizedPath, type Locale } from '@/lib/i18n/config'
@@ -51,9 +52,8 @@ export default async function CaseStudiesIndexPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {caseStudyPages.map((caseStudy) => (
-              <Link
+              <article
                 key={caseStudy.slug}
-                href={localizedPath(locale, `/case-studies/${caseStudy.slug}`)}
                 className="group rounded-[20px] border border-border overflow-hidden hover:border-brand-purple/30 hover:shadow-lg transition-all duration-300"
               >
                 <div className="relative aspect-[16/10] bg-navy-dark">
@@ -64,22 +64,33 @@ export default async function CaseStudiesIndexPage({ params }: Props) {
                     className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
+                  <Link
+                    href={localizedPath(locale, `/case-studies/${caseStudy.slug}`)}
+                    className="absolute inset-0 z-0"
+                    aria-label={`${caseStudy.client} — ${t['cases.readFull']}`}
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 z-10 pointer-events-none">
                     <span className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-brand-purple/20 border border-brand-purple/30 text-brand-purple-light">
                       {caseStudy.engagement}
                     </span>
                     <h2 className="mt-3 text-2xl font-serif text-white">
-                      {caseStudy.client}
+                      <LinkedClientName
+                        name={caseStudy.client}
+                        linkClassName="text-white hover:text-brand-purple-light pointer-events-auto"
+                      />
                     </h2>
                     <p className="mt-1 text-sm text-white/55">{caseStudy.industry}</p>
                   </div>
                 </div>
-                <div className="p-6">
+                <Link
+                  href={localizedPath(locale, `/case-studies/${caseStudy.slug}`)}
+                  className="block p-6"
+                >
                   <p className="text-text-body-light leading-relaxed line-clamp-3">
                     {caseStudy.description}
                   </p>
-                </div>
-              </Link>
+                </Link>
+              </article>
             ))}
           </div>
         </div>

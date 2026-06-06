@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { caseStudyImages } from "@/lib/images"
 import { LocaleLink } from "@/components/locale-link"
+import { LinkedClientName } from "@/components/linked-client-name"
 import { SectionHeader } from "@/components/section-header"
 import { useLanguage } from "@/lib/i18n"
 
@@ -24,6 +25,13 @@ function CaseStudyContent({
       className={`grid lg:grid-cols-2 gap-12 items-start ${isActive ? "" : "sr-only"}`}
     >
       <div className="space-y-6">
+        <h2 className="text-2xl sm:text-3xl font-serif text-white">
+          <LinkedClientName
+            name={caseItem.client}
+            linkClassName="text-white hover:text-brand-purple-light"
+          />
+        </h2>
+
         <div className="flex flex-wrap gap-4 text-sm">
           <span className="text-white/40">
             <span className="text-white/60">{t("cases.location")}:</span>{" "}
@@ -118,22 +126,42 @@ export function CaseStudies() {
           className="mb-12"
         />
 
-        <div className="flex gap-2 mb-12 overflow-x-auto pb-2 snap-x snap-mandatory scroll-px-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div
+          role="tablist"
+          aria-label={t("cases.label")}
+          className="flex gap-2 mb-12 overflow-x-auto pb-2 snap-x snap-mandatory scroll-px-4 -mx-4 px-4 sm:mx-0 sm:px-0"
+        >
           {caseStudyImages.map((caseItem, index) => (
-            <button
+            <div
               key={caseItem.id}
-              type="button"
-              onClick={() => setActiveCase(index)}
+              role="tab"
+              id={`case-tab-${caseItem.id}`}
               aria-controls={`case-${caseItem.id}`}
-              aria-pressed={activeCase === index}
-              className={`min-h-11 shrink-0 snap-start px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple ${
+              aria-selected={activeCase === index}
+              tabIndex={activeCase === index ? 0 : -1}
+              onClick={() => setActiveCase(index)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault()
+                  setActiveCase(index)
+                }
+              }}
+              className={`min-h-11 shrink-0 snap-start px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple ${
                 activeCase === index
                   ? "bg-brand-purple text-white"
                   : "bg-white/[0.05] text-white/50 hover:text-white/80 hover:bg-white/[0.08]"
               }`}
             >
-              {caseItem.client}
-            </button>
+              <LinkedClientName
+                name={caseItem.client}
+                linkClassName={
+                  activeCase === index
+                    ? "text-white hover:text-white"
+                    : "text-inherit hover:text-white"
+                }
+                onLinkClick={(event) => event.stopPropagation()}
+              />
+            </div>
           ))}
           <LocaleLink
             href="/case-studies"

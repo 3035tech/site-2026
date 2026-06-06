@@ -4,7 +4,7 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.3035tech.com'),
   title: {
-    default: '3035TECH — Your LATAM Technology Partner',
+    default: '3035TECH — Your Global Technology Partner',
     template: '%s | 3035TECH',
   },
   description:
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     'managed squads',
     'outsourcing',
     'nearshore',
+    'global technology partner',
     'LATAM technology',
     'Brazil software company',
     'custom software',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: '3035TECH — Your LATAM Technology Partner',
+    title: '3035TECH — Your Global Technology Partner',
     description:
       'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development for enterprises worldwide.',
     url: 'https://www.3035tech.com',
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '3035TECH — Your LATAM Technology Partner',
+    title: '3035TECH — Your Global Technology Partner',
     description:
       'Your global technology partner headquartered in Brazil. Managed squads, staff augmentation, and custom software development.',
     site: '@3035tech',

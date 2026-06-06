@@ -8,6 +8,7 @@ export type ClientLink = {
 /** Known client / partner names → official websites (longest names first for matching). */
 export const clientLinks: ClientLink[] = [
   ...clientLogos.map(({ name, url }) => ({ name, url })),
+  { name: 'Arezzo / AZZAS 2154', url: 'https://www.arezzo.com.br' },
   { name: 'DrAnjo', url: 'https://dranjo.com.br' },
 ].sort((a, b) => b.name.length - a.name.length)
 
@@ -25,6 +26,17 @@ export type TextSegment =
   | { type: 'link'; value: string; href: string }
 
 const linkByName = new Map(clientLinks.map(({ name, url }) => [name, url]))
+
+export function getClientUrl(clientName: string): string | undefined {
+  const exact = linkByName.get(clientName)
+  if (exact) return exact
+
+  for (const { name, url } of clientLinks) {
+    if (clientName.includes(name)) return url
+  }
+
+  return undefined
+}
 
 export function splitTextWithClientLinks(text: string): TextSegment[] {
   const segments: TextSegment[] = []

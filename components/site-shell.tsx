@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import type { ReactNode } from 'react'
 import { BreadcrumbJsonLd, type BreadcrumbItem } from '@/components/breadcrumb-json-ld'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
@@ -26,7 +27,7 @@ export function InnerPageHero({
   breadcrumbItems,
 }: {
   label: string
-  title: string
+  title: ReactNode
   description: string
   backHref?: string
   backLabel?: string
