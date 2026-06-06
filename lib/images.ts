@@ -130,7 +130,7 @@ export const teachAlumniLogos: SiteImage[] = [
   {
     src: '/images/logos/sap.svg',
     alt: 'SAP alumni at 3035TEACH',
-    invertOnDark: true,
+    invertOnDark: false,
   },
   {
     src: '/images/logos/dell.svg',

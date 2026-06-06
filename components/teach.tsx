@@ -27,7 +27,7 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
 
   interface Stat {
     value?: string
-    logo?: string
+    logo?: (typeof teachAlumniLogos)[number]
     labelKey: string
   }
 
@@ -35,8 +35,8 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
     { value: "5", labelKey: "teach.stats.editions" },
     { value: "100%", labelKey: "teach.stats.subsidized" },
     { value: "80%+", labelKey: "teach.stats.employed" },
-    { logo: teachAlumniLogos[0].src, labelKey: "teach.stats.sapAlumni" },
-    { logo: teachAlumniLogos[1].src, labelKey: "teach.stats.dellAlumni" },
+    { logo: teachAlumniLogos[0], labelKey: "teach.stats.sapAlumni" },
+    { logo: teachAlumniLogos[1], labelKey: "teach.stats.dellAlumni" },
   ]
   
   return (
@@ -144,11 +144,15 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
                   {stat.logo ? (
                     <div className="h-8 flex items-center justify-center">
                       <Image
-                        src={stat.logo}
-                        alt={t(stat.labelKey)}
-                        width={60}
-                        height={32}
-                        className="h-6 w-auto brightness-0 invert opacity-70"
+                        src={stat.logo.src}
+                        alt={stat.logo.alt}
+                        width={stat.logo.invertOnDark ? 60 : 72}
+                        height={stat.logo.invertOnDark ? 32 : 36}
+                        className={`h-7 w-auto ${
+                          stat.logo.invertOnDark
+                            ? "brightness-0 invert opacity-70"
+                            : "opacity-95"
+                        }`}
                       />
                     </div>
                   ) : (
