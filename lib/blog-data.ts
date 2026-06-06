@@ -1,26 +1,10 @@
 import { type Locale, locales, localizedPath } from '@/lib/i18n/config'
 import { siteUrl } from '@/lib/site'
+import { additionalBlogPosts } from '@/lib/blog-posts-additional'
 
-export type BlogSection = {
-  heading?: string
-  paragraphs: string[]
-}
+export type { BlogPost, BlogPostContent, BlogSection } from '@/lib/blog-types'
 
-export type BlogPostContent = {
-  title: string
-  description: string
-  tag: string
-  sections: BlogSection[]
-}
-
-export type BlogPost = {
-  slug: string
-  publishedAt: string
-  readingTimeMinutes: number
-  content: Record<Locale, BlogPostContent>
-}
-
-const posts: BlogPost[] = [
+const coreBlogPosts = [
   {
     slug: 'nearshore-staff-augmentation-from-brazil',
     publishedAt: '2026-03-15',
@@ -419,6 +403,10 @@ const posts: BlogPost[] = [
     },
   },
 ]
+
+const posts = [...additionalBlogPosts, ...coreBlogPosts].sort((a, b) =>
+  b.publishedAt.localeCompare(a.publishedAt)
+)
 
 export const blogSlugs = posts.map((p) => p.slug)
 
