@@ -1,7 +1,6 @@
 "use client"
 
 import { ReactNode } from "react"
-import { ConsentGatedAnalytics } from "@/components/consent-gated-analytics"
 import { CookieConsentAnalyticsSync, CookieConsentProvider } from "@/components/cookie-consent-provider"
 import { GaAnalytics } from "@/components/ga-analytics"
 import { LanguageProvider, translations, type Language } from "@/lib/i18n"
@@ -18,7 +17,6 @@ export function Providers({
       <CookieConsentProvider>
         {children}
         <CookieConsentAnalyticsSync />
-        <ConsentGatedAnalytics />
         <GaAnalytics />
       </CookieConsentProvider>
     </LanguageProvider>

@@ -15,7 +15,7 @@ Site de marketing da [3035TECH](https://www.3035tech.com): parceira global de en
 | React | 19 |
 | TypeScript | 5.7 |
 | Tailwind CSS | 4 |
-| Deploy | Vercel |
+| Deploy | AWS Amplify |
 
 ---
 
