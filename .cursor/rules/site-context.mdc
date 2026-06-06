@@ -1,0 +1,21 @@
+---
+description: MANDATORY — Read AGENTS.md and docs/SITE-CONTEXT.md before any edit to this repo.
+alwaysApply: true
+---
+
+# ⚠️ Leitura obrigatória antes de editar
+
+**Não altere nada neste repositório até ler:**
+
+1. **`AGENTS.md`** (raiz) — regras críticas e erros comuns
+2. **`docs/SITE-CONTEXT.md`** — contexto completo de SEO, copy, blog, i18n e assets
+
+Sem isso, alterações tendem a quebrar indexação, posicionamento de marca ou traduções.
+
+## Lembrete rápido
+
+- FAQ_COUNT = **11** em `components/faq.tsx` **e** `lib/seo-data.ts`
+- Copy de IA só em `about.delivery.*` + `faq.11.*`; Europa/startups em `about.europe.*`
+- Blog: 4 idiomas, evergreen; posts em `lib/blog-data.ts` + `lib/blog-posts-additional.ts`
+- SAP logo: `invertOnDark: false`
+- Não commitar sem pedido; após deploy: `npm run verify:seo`

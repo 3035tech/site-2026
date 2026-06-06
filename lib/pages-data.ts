@@ -50,7 +50,7 @@ const serviceDefs = [
   {
     slug: 'support-evolution',
     key: 'support',
-    image: undefined,
+    image: '/images/support-evolution.jpg',
   },
 ] as const
 

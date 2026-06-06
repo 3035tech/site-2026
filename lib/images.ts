@@ -148,4 +148,5 @@ export const allSiteImagePaths = [
   '/images/managed-squads.jpg',
   '/images/staff-augmentation.jpg',
   '/images/custom-development.jpg',
+  '/images/support-evolution.jpg',
 ]
