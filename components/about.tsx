@@ -69,7 +69,16 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
           </div>
         </div>
 
-        <div className="mt-12 rounded-2xl border border-brand-purple/15 bg-off-white p-6 sm:p-8 lg:p-10">
+        <div className="mt-12 rounded-2xl border border-border bg-white p-6 sm:p-8 lg:p-10">
+          <span className="text-brand-purple text-xs font-bold uppercase tracking-[0.15em]">
+            {t("about.delivery.label")}
+          </span>
+          <p className="mt-4 text-text-body-light leading-relaxed max-w-3xl">
+            {t("about.delivery.desc")}
+          </p>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-brand-purple/15 bg-off-white p-6 sm:p-8 lg:p-10">
           <span className="text-brand-purple text-xs font-bold uppercase tracking-[0.15em]">
             {t("about.europe.label")}
           </span>

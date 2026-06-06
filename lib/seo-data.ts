@@ -7,7 +7,7 @@ const en = translations.en
 
 export { organizationPhone }
 
-const FAQ_COUNT = 10
+const FAQ_COUNT = 11
 
 export function getFaqItems(locale: Locale) {
   const dict = translations[locale]

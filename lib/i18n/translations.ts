@@ -175,8 +175,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.label": "About Us",
     "about.title": "Technology partner",
     "about.titleHighlight": "rooted in Brazil",
-    "about.desc1": "Headquartered in Brazil with operations in the United States, Ireland, and Germany, 3035TECH is your technology partner that helps enterprises solve complex challenges through dedicated engineering teams and custom software solutions.",
+    "about.desc1": "Headquartered in Brazil with operations in the United States, Ireland, and Germany, 3035TECH is your technology partner for companies at different stages of growth — from startups and scale-ups to established organizations — helping them solve complex challenges through dedicated engineering teams and custom software solutions.",
     "about.desc2": "We combine deep technical expertise with a commitment to long-term partnerships, delivering measurable results for clients across retail, fintech, healthcare, and beyond.",
+    "about.delivery.label": "How we deliver",
+    "about.delivery.desc": "Many clients ask whether we use AI in our work. We do — carefully and as part of a broader engineering practice. AI supports parts of our workflow, such as drafting documentation, exploring implementation options, and strengthening test coverage. It is one tool among many, alongside code review, established processes, and direct collaboration with your team. AI may help us work more efficiently; it does not replace technical judgment, accountability, or the people you rely on for delivery.",
     "about.locations.brazil": "Brazil",
     "about.locations.brazilDesc": "Headquarters & Engineering Center, Campo Bom, RS",
     "about.locations.usa": "United States",
@@ -187,7 +189,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.locations.germanyDesc": "DataCentric partnership & enterprise clients",
     "about.europe.label": "European Market",
     "about.europe.title": "Project delivery and commercial presence in Ireland",
-    "about.europe.desc": "Our Ireland office is the European base for project coordination and commercial engagement — supporting enterprises across the EU and UK with aligned business hours, a local point of contact, and direct access to 3035TECH engineering teams in Brazil.",
+    "about.europe.desc": "Our Ireland office is the European base for project coordination and commercial engagement — supporting startups, growing businesses, and larger accounts across the EU and UK with aligned business hours, a local point of contact, and direct access to 3035TECH engineering teams in Brazil.",
 
     // Contact
     "contact.label": "Get in Touch",
@@ -230,6 +232,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "faq.9.a": "3035TECH specializes in React, JavaScript, Java, Spring Boot, React Native, cloud-native architectures, API ecosystems, and enterprise web and mobile platforms. Teams follow agile delivery with end-to-end ownership from architecture to production.",
     "faq.10.q": "How long has 3035TECH been operating?",
     "faq.10.a": "3035TECH has been delivering technology solutions since 2015, with over 10 years of experience, 50+ projects delivered, and operations in 4 countries.",
+    "faq.11.q": "Does 3035TECH use AI in software delivery?",
+    "faq.11.a": "Yes, in a measured way. We use AI where it adds clear value — for example when drafting documentation, supporting implementation, and strengthening tests — always within workflows led by our engineers and subject to human review, your standards, and project policies. AI is a supporting tool for the team's work, not a replacement for engineers or for architecture and security decisions. We do not offer AI as a standalone product; we provide engineering teams that may use AI as part of their day-to-day work when it makes sense.",
 
     // Blog
     "blog.label": "Insights",
@@ -422,8 +426,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.label": "Sobre Nosotros",
     "about.title": "Socio tecnológico",
     "about.titleHighlight": "con raíces en Brasil",
-    "about.desc1": "Con sede en Brasil y operaciones en Estados Unidos, Irlanda y Alemania, 3035TECH es tu socio tecnológico que ayuda a las empresas a resolver desafíos complejos a través de equipos de ingeniería dedicados y soluciones de software personalizadas.",
+    "about.desc1": "Con sede en Brasil y operaciones en Estados Unidos, Irlanda y Alemania, 3035TECH es tu socio tecnológico para empresas en distintas etapas de crecimiento — desde startups y scale-ups hasta organizaciones consolidadas — ayudándolas a resolver desafíos complejos a través de equipos de ingeniería dedicados y soluciones de software personalizadas.",
     "about.desc2": "Combinamos profunda experiencia técnica con un compromiso con alianzas a largo plazo, entregando resultados medibles para clientes en retail, fintech, salud y más.",
+    "about.delivery.label": "Cómo entregamos",
+    "about.delivery.desc": "Muchos clientes preguntan si usamos IA en nuestro trabajo. Lo hacemos — con criterio y como parte de una práctica de ingeniería más amplia. La IA apoya partes de nuestro flujo, como borradores de documentación, exploración de opciones de implementación y refuerzo de cobertura de pruebas. Es una herramienta entre otras, junto con code review, procesos establecidos y colaboración directa con su equipo. La IA puede ayudarnos a trabajar con más eficiencia; no reemplaza el criterio técnico, la responsabilidad ni las personas de las que depende la entrega.",
     "about.locations.brazil": "Brasil",
     "about.locations.brazilDesc": "Sede y Centro de Ingeniería, Campo Bom, RS",
     "about.locations.usa": "Estados Unidos",
@@ -434,7 +440,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.locations.germanyDesc": "Alianza con DataCentric y clientes empresariales",
     "about.europe.label": "Mercado Europeo",
     "about.europe.title": "Entrega de proyectos y presencia comercial en Irlanda",
-    "about.europe.desc": "Nuestra oficina en Irlanda es la base europea para coordinación de proyectos y relación comercial — apoyando empresas en la UE y Reino Unido con horarios alineados, un punto de contacto local y acceso directo a los equipos de ingeniería de 3035TECH en Brasil.",
+    "about.europe.desc": "Nuestra oficina en Irlanda es la base europea para coordinación de proyectos y relación comercial — apoyando startups, empresas en crecimiento y cuentas más grandes en la UE y Reino Unido, con horarios alineados, un punto de contacto local y acceso directo a los equipos de ingeniería de 3035TECH en Brasil.",
 
     // Contact
     "contact.label": "Contáctanos",
@@ -477,6 +483,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "faq.9.a": "3035TECH se especializa en React, JavaScript, Java, Spring Boot, React Native, arquitecturas cloud-native, ecosistemas de API y plataformas web y mobile empresariales. Los equipos siguen entrega ágil con ownership end-to-end, desde la arquitectura hasta producción.",
     "faq.10.q": "¿Desde cuándo opera 3035TECH?",
     "faq.10.a": "3035TECH entrega soluciones tecnológicas desde 2015, con más de 10 años de experiencia, más de 50 proyectos entregados y operaciones en 4 países.",
+    "faq.11.q": "¿3035TECH usa IA en la entrega de software?",
+    "faq.11.a": "Sí, de forma ponderada. Usamos IA donde aporta valor claro — por ejemplo en borradores de documentación, apoyo en la implementación y refuerzo de pruebas — siempre dentro de flujos liderados por nuestros ingenieros y sujetos a revisión humana, sus estándares y las políticas del proyecto. La IA es una herramienta de apoyo al trabajo del equipo, no un reemplazo de ingenieros ni de decisiones de arquitectura y seguridad. No ofrecemos IA como producto separado; ofrecemos equipos de ingeniería que pueden usar IA como parte del día a día cuando tenga sentido.",
 
     // Blog
     "blog.label": "Insights",
@@ -669,8 +677,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.label": "Sobre Nós",
     "about.title": "Parceira de tecnologia",
     "about.titleHighlight": "com raízes no Brasil",
-    "about.desc1": "Com sede no Brasil e operações nos Estados Unidos, Irlanda e Alemanha, a 3035TECH é sua parceira de tecnologia que ajuda empresas a resolver desafios complexos através de equipes de engenharia dedicadas e soluções de software customizadas.",
+    "about.desc1": "Com sede no Brasil e operações nos Estados Unidos, Irlanda e Alemanha, a 3035TECH é sua parceira de tecnologia para empresas em diferentes estágios de crescimento — de startups e scale-ups a organizações consolidadas — ajudando-as a resolver desafios complexos através de equipes de engenharia dedicadas e soluções de software customizadas.",
     "about.desc2": "Combinamos profunda expertise técnica com compromisso com parcerias de longo prazo, entregando resultados mensuráveis para clientes em varejo, fintech, saúde e muito mais.",
+    "about.delivery.label": "Como entregamos",
+    "about.delivery.desc": "Muitos clientes perguntam se usamos IA no nosso trabalho. Usamos — com critério e como parte de uma prática de engenharia mais ampla. A IA apoia etapas do fluxo, como rascunhos de documentação, exploração de alternativas de implementação e reforço de cobertura de testes. É uma ferramenta entre outras, junto com code review, processos estabelecidos e colaboração direta com o seu time. A IA pode nos ajudar a trabalhar com mais eficiência; não substitui o julgamento técnico, a responsabilidade pela entrega nem as pessoas em quem você confia.",
     "about.locations.brazil": "Brasil",
     "about.locations.brazilDesc": "Sede e Centro de Engenharia, Campo Bom, RS",
     "about.locations.usa": "Estados Unidos",
@@ -681,7 +691,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.locations.germanyDesc": "Parceria DataCentric e clientes empresariais",
     "about.europe.label": "Mercado Europeu",
     "about.europe.title": "Entrega de projetos e presença comercial na Irlanda",
-    "about.europe.desc": "Nosso escritório na Irlanda é a base europeia para coordenação de projetos e engajamento comercial — apoiando empresas na UE e Reino Unido com horários alinhados, um ponto de contato local e acesso direto aos times de engenharia da 3035TECH no Brasil.",
+    "about.europe.desc": "Nosso escritório na Irlanda é a base europeia para coordenação de projetos e engajamento comercial — apoiando startups, empresas em crescimento e contas maiores na UE e Reino Unido, com horários alinhados, um ponto de contato local e acesso direto aos times de engenharia da 3035TECH no Brasil.",
 
     // Contact
     "contact.label": "Entre em Contato",
@@ -724,6 +734,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "faq.9.a": "A 3035TECH é especialista em React, JavaScript, Java, Spring Boot, React Native, arquiteturas cloud-native, ecossistemas de API e plataformas web e mobile corporativas. Os times seguem entrega ágil com ownership end-to-end, da arquitetura à produção.",
     "faq.10.q": "Há quanto tempo a 3035TECH atua?",
     "faq.10.a": "A 3035TECH entrega soluções tecnológicas desde 2015, com mais de 10 anos de experiência, mais de 50 projetos entregues e operações em 4 países.",
+    "faq.11.q": "A 3035TECH usa IA na entrega de software?",
+    "faq.11.a": "Sim, de forma ponderada. Usamos IA onde traz valor claro — por exemplo em rascunhos de documentação, apoio na implementação e reforço de testes — sempre dentro de fluxos conduzidos por nossos engenheiros e sujeitos a revisão humana, aos seus padrões e às políticas do projeto. A IA é uma ferramenta de apoio ao trabalho do time, não substituto de engenheiros nem de decisões de arquitetura e segurança. Não oferecemos IA como produto separado; oferecemos times de engenharia que podem, quando fizer sentido, usar IA como parte do dia a dia.",
 
     // Blog
     "blog.label": "Insights",
@@ -916,8 +928,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.label": "Über uns",
     "about.title": "Technologiepartner",
     "about.titleHighlight": "mit Wurzeln in Brasilien",
-    "about.desc1": "Mit Hauptsitz in Brasilien und Niederlassungen in den USA, Irland und Deutschland ist 3035TECH Ihr Technologiepartner, der Unternehmen hilft, komplexe Herausforderungen durch dedizierte Engineering-Teams und maßgeschneiderte Softwarelösungen zu lösen.",
+    "about.desc1": "Mit Hauptsitz in Brasilien und Niederlassungen in den USA, Irland und Deutschland ist 3035TECH Ihr Technologiepartner für Unternehmen in unterschiedlichen Wachstumsphasen — von Startups und Scale-ups bis hin zu etablierten Organisationen — und unterstützt sie bei komplexen Herausforderungen durch dedizierte Engineering-Teams und maßgeschneiderte Softwarelösungen.",
     "about.desc2": "Wir kombinieren tiefgreifende technische Expertise mit einem Engagement für langfristige Partnerschaften und liefern messbare Ergebnisse für Kunden in Einzelhandel, Fintech, Gesundheitswesen und darüber hinaus.",
+    "about.delivery.label": "Wie wir liefern",
+    "about.delivery.desc": "Viele Kunden fragen, ob wir KI in unserer Arbeit einsetzen. Ja — mit Bedacht und als Teil einer breiteren Engineering-Praxis. KI unterstützt Teile unseres Workflows, etwa Entwürfe für Dokumentation, die Erkundung von Implementierungsoptionen und die Stärkung der Testabdeckung. Sie ist ein Werkzeug unter vielen, neben Code Review, etablierten Prozessen und direkter Zusammenarbeit mit Ihrem Team. KI kann uns effizienter arbeiten lassen; sie ersetzt weder technisches Urteilsvermögen, Verantwortung noch die Menschen, auf die Sie sich bei der Lieferung verlassen.",
     "about.locations.brazil": "Brasilien",
     "about.locations.brazilDesc": "Hauptsitz & Engineering-Zentrum, Campo Bom, RS",
     "about.locations.usa": "Vereinigte Staaten",
@@ -928,7 +942,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.locations.germanyDesc": "DataCentric-Partnerschaft & Unternehmenskunden",
     "about.europe.label": "Europäischer Markt",
     "about.europe.title": "Projektabwicklung und Commercial-Präsenz in Irland",
-    "about.europe.desc": "Unser Büro in Irland ist die europäische Basis für Projektkoordination und Commercial Engagement — mit ausgerichteten Geschäftszeiten, lokalem Ansprechpartner und direktem Zugang zu den Engineering-Teams der 3035TECH in Brasilien für Unternehmen in der EU und im UK.",
+    "about.europe.desc": "Unser Büro in Irland ist die europäische Basis für Projektkoordination und Commercial Engagement — für Startups, wachsende Unternehmen und größere Accounts in der EU und im UK, mit ausgerichteten Geschäftszeiten, lokalem Ansprechpartner und direktem Zugang zu den Engineering-Teams der 3035TECH in Brasilien.",
 
     // Contact
     "contact.label": "Kontakt aufnehmen",
@@ -971,6 +985,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "faq.9.a": "3035TECH spezialisiert sich auf React, JavaScript, Java, Spring Boot, React Native, Cloud-native Architekturen, API-Ökosysteme sowie Enterprise-Web- und Mobile-Plattformen. Teams arbeiten agil mit End-to-End-Verantwortung von der Architektur bis zur Produktion.",
     "faq.10.q": "Seit wann ist 3035TECH tätig?",
     "faq.10.a": "3035TECH liefert Technologielösungen seit 2015 – mit über 10 Jahren Erfahrung, mehr als 50 abgeschlossenen Projekten und Präsenz in 4 Ländern.",
+    "faq.11.q": "Setzt 3035TECH KI in der Softwarelieferung ein?",
+    "faq.11.a": "Ja, in maßvoller Form. Wir nutzen KI dort, wo sie klaren Mehrwert bietet — etwa bei Dokumentationsentwürfen, Implementierungsunterstützung und der Stärkung von Tests — stets in von unseren Ingenieuren geführten Workflows und unter menschlicher Prüfung, Ihren Standards und den Projektrichtlinien. KI ist ein unterstützendes Werkzeug für die Arbeit des Teams, kein Ersatz für Ingenieure oder für Architektur- und Sicherheitsentscheidungen. Wir bieten KI nicht als eigenständiges Produkt an; wir stellen Engineering-Teams bereit, die KI im Tagesgeschäft nutzen können, wenn es sinnvoll ist.",
 
     // Blog
     "blog.label": "Insights",
