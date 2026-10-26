@@ -57,7 +57,7 @@ Documento de referência para alterações futuras no site.
 - Rotas localizadas em `app/[locale]/…`
 - `<html lang>` via layout de locale
 - **Canonical** sempre em `www.3035tech.com`
-- Redirect permanente `3035tech.com` → `www.3035tech.com` em `next.config.mjs`
+- Redirect permanente `3035tech.com` → `www.3035tech.com`: regra `301` do AWS Amplify (`appId d2t7arffzzmhl2`), com fallback em `next.config.mjs`. Preservar a outra regra do Amplify (`/<*>` → `/index.html`, `404-200`) ao alterar `customRules`.
 - URL legada `/index.html` → `/en` no domínio canônico, para resolver o 404 visto no Search Console
 - Verificação Bing: `public/BingSiteAuth.xml`
 

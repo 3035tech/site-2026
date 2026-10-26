@@ -49,6 +49,22 @@ for (const check of checks) {
   }
 }
 
+if (baseUrl === 'https://www.3035tech.com') {
+  try {
+    const res = await fetch('https://3035tech.com/', { redirect: 'manual' })
+    const location = res.headers.get('location')
+    if (res.status === 301 && location === 'https://www.3035tech.com/') {
+      console.log('✓ apex → www (301)')
+    } else {
+      failed++
+      console.error(`✗ apex → www — expected 301 to https://www.3035tech.com/, got ${res.status} to ${location}`)
+    }
+  } catch (error) {
+    failed++
+    console.error(`✗ apex → www — ${error.message}`)
+  }
+}
+
 if (failed > 0) {
   console.error(`\n${failed} check(s) failed for ${baseUrl}`)
   process.exit(1)
