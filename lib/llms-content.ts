@@ -71,7 +71,7 @@ ${url('en', '/3035teach')}
 - Email: ${contactEmail}
 - Phone: ${contactPhoneDisplay}
 - WhatsApp: ${contactPhoneDisplay}
-- LinkedIn: https://www.linkedin.com/company/3035tech
+- LinkedIn: https://www.linkedin.com/company/3035-tech
 - Address: Hub 5796, Campo Bom, RS, Brazil
 
 ## Website Languages
@@ -84,6 +84,7 @@ ${supportLanguages.join(', ')}
 All content is server-rendered and available without JavaScript. FAQ schema, case studies, services, and blog articles are indexable in all four website languages.
 
 - Sitemap: ${siteUrl}/sitemap.xml
+- Image sitemap: ${siteUrl}/image-sitemap.xml
 - RSS feed: ${siteUrl}/feed.xml
 - Robots: ${siteUrl}/robots.txt
 - Open Graph images: ${siteUrl}/og (dynamic, per page)

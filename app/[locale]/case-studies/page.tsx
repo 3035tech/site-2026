@@ -59,7 +59,7 @@ export default async function CaseStudiesIndexPage({ params }: Props) {
                 <div className="relative aspect-[16/10] bg-navy-dark">
                   <Image
                     src={caseStudy.image}
-                    alt={caseStudy.client}
+                    alt={`${caseStudy.client} — ${caseStudy.industry}`}
                     fill
                     className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                   />

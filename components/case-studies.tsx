@@ -77,7 +77,7 @@ function CaseStudyContent({
         <div className="aspect-[4/3] rounded-2xl bg-navy-alt border border-white/[0.06] relative overflow-hidden">
           <Image
             src={caseItem.src}
-            alt={caseItem.alt}
+            alt={`${caseItem.client} — ${t(`cases.${caseItem.id}.industry`)}`}
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"

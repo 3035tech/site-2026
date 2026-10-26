@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: caseStudy.metaTitle,
     description: caseStudy.metaDescription,
     path: `/case-studies/${caseStudy.slug}`,
-    image: caseStudy.image,
+    image: caseStudy.image.endsWith('.svg') ? undefined : caseStudy.image,
     ogLabel: translations[locale]['pages.caseStudy'],
   })
 }
@@ -71,7 +71,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-10">
             <Image
               src={caseStudy.image}
-              alt={caseStudy.client}
+              alt={`${caseStudy.client} — ${caseStudy.industry}`}
               fill
               className="object-cover"
               priority

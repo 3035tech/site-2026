@@ -4,7 +4,7 @@
 
 Documento de referência para alterações futuras no site.
 
-Última atualização: **2026-06-06**
+Última atualização: **2026-10-26**
 
 ---
 
@@ -30,6 +30,8 @@ Documento de referência para alterações futuras no site.
 - Startups, scale-ups e mercado europeu → bloco **About / Europa**, **não** dentro do FAQ de IA.
 
 ### Blocos de copy importantes
+
+- A abertura da home descreve a entrega de produtos digitais por equipes de engenharia dedicadas; o subtítulo apresenta squads gerenciados, especialistas integrados ao time e software sob medida. O CTA principal leva à página de contato com o convite para falar sobre o projeto. Título, descrição e label da imagem social da home também são localizados nos quatro idiomas.
 
 | Chave i18n | Onde aparece | Regra |
 |------------|--------------|-------|
@@ -58,6 +60,7 @@ Documento de referência para alterações futuras no site.
 | Recurso | URL correta |
 |---------|-------------|
 | Sitemap | `https://www.3035tech.com/sitemap.xml` |
+| Sitemap de imagens | `https://www.3035tech.com/image-sitemap.xml` |
 | Robots | `https://www.3035tech.com/robots.txt` |
 | RSS | `https://www.3035tech.com/feed.xml` |
 | LLMs | `https://www.3035tech.com/llms.txt` |
@@ -68,7 +71,8 @@ Documento de referência para alterações futuras no site.
 ### O que cada página/recurso faz
 | Arquivo | Função |
 |---------|--------|
-| `app/sitemap.ts` | Sitemap com `lastModified`, prioridade e **hreflang** (`buildAlternateLanguages`) |
+| `app/sitemap.ts` | Sitemap com prioridade e **hreflang** (`buildAlternateLanguages`); `lastModified` só em posts com data de publicação conhecida |
+| `app/image-sitemap.xml/route.ts` | Sitemap de imagens de home, serviços e cases nos quatro idiomas |
 | `app/robots.ts` | Permite crawlers gerais + bots de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) |
 | `app/feed.xml/route.ts` | RSS dos posts (EN) |
 | `app/llms.txt/route.ts` | Conteúdo dinâmico para crawlers de IA (`lib/llms-content.ts`) |
@@ -150,6 +154,10 @@ Script: `scripts/verify-seo.mjs` — CI em `.github/workflows/ci.yml`.
 ---
 
 ## Serviços e imagens
+
+O case 2Gift foi divulgado publicamente pela 3035TECH e por Thomas Metz no LinkedIn: plataforma de gift cards para restaurantes entregue em produção em cinco meses, seguida de suporte e evolução. A arte `case-2gift.svg` é uma ilustração editorial, não uma captura do produto. Fonte pública: https://ie.linkedin.com/in/thomas-metz
+
+Para descoberta de imagens, manter `<img>` com `alt` descritivo, assets acessíveis sem login e sitemap de imagens. Para busca por IA, o `robots.txt` permite OAI-SearchBot e outros crawlers; `llms.txt` é complementar e não substitui indexação normal.
 
 ### Serviços (`lib/pages-data.ts`)
 | Slug | Imagem |

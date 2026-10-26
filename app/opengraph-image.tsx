@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = '3035TECH — Your Global Technology Partner'
+export const alt = '3035TECH — Dedicated engineering teams and custom software'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -90,7 +90,7 @@ export default async function Image() {
               marginBottom: 24,
             }}
           >
-            <span>We engineer the</span>
+            <span>We build and evolve</span>
             <span
               style={{
                 color: '#A78BFA',
@@ -99,9 +99,9 @@ export default async function Image() {
                 marginRight: 12,
               }}
             >
-              technology
+              digital products
             </span>
-            <span>behind your business growth.</span>
+            <span>with dedicated engineering teams.</span>
           </div>
 
           <div
@@ -114,7 +114,7 @@ export default async function Image() {
               maxWidth: '780px',
             }}
           >
-            Managed squads, staff augmentation, and custom software for
+            Managed squads, embedded specialists, and custom software for
             enterprises worldwide.
           </div>
         </div>

@@ -167,7 +167,7 @@ Company-subsidized developer training program in Brazil. 5 editions completed. 8
 - Website: ${siteUrl}
 - Email: ${contactEmail}
 - Phone: ${contactPhoneDisplay}
-- LinkedIn: https://www.linkedin.com/company/3035tech
+- LinkedIn: https://www.linkedin.com/company/3035-tech
 - Location: Hub 5796, Campo Bom, RS, Brazil
 
 ## Website Languages

@@ -102,6 +102,7 @@ const caseStudyDefs = [
   { slug: 'arezzo', client: 'Arezzo / AZZAS 2154', key: 'arezzo', image: '/images/case-arezzo.jpg' },
   { slug: 'clickfunnels', client: 'ClickFunnels', key: 'clickfunnels', image: '/images/case-clickfunnels.jpg' },
   { slug: 'lunchteam', client: 'LunchTeam', key: 'lunchteam', image: '/images/case-lunchteam.jpg' },
+  { slug: '2gift', client: '2Gift', key: 'twogift', image: '/images/case-2gift.svg' },
   { slug: 'the-fruit-people', client: 'The Fruit People', key: 'fruitpeople', image: '/images/case-fruitpeople.jpg' },
   { slug: 'gomoney', client: 'GoMoney', key: 'gomoney', image: '/images/case-gomoney.jpg' },
   { slug: 'doctorclin', client: 'DoctorClin', key: 'doctorclin', image: '/images/case-doctorclin.jpg' },

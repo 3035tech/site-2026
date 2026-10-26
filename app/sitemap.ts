@@ -20,13 +20,12 @@ const basePaths = [
   ...blogSlugs.map((slug) => `/blog/${slug}`),
 ]
 
-function lastModifiedForPath(path: string): Date {
+function lastModifiedForPath(path: string): Date | undefined {
   const blogMatch = path.match(/^\/blog\/([^/]+)$/)
   if (blogMatch) {
     const post = getBlogPost('en', blogMatch[1])
     if (post) return new Date(post.publishedAt)
   }
-  return new Date('2026-01-01')
 }
 
 function priorityForPath(path: string): number {
@@ -40,9 +39,10 @@ function priorityForPath(path: string): number {
 export default function sitemap(): MetadataRoute.Sitemap {
   return basePaths.map((path) => {
     const enPath = localizedPath('en', path)
+    const lastModified = lastModifiedForPath(path)
     return {
       url: `${siteUrl}${enPath}`,
-      lastModified: lastModifiedForPath(path),
+      ...(lastModified ? { lastModified } : {}),
       changeFrequency: path === '/' ? 'weekly' : path.includes('/blog/') ? 'monthly' : 'monthly',
       priority: priorityForPath(path),
       alternates: {

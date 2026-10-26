@@ -32,7 +32,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/api/',
       })),
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: [`${siteUrl}/sitemap.xml`, `${siteUrl}/image-sitemap.xml`],
     host: siteUrl,
   }
 }

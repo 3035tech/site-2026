@@ -40,7 +40,7 @@ export function StructuredData({ locale }: { locale: Locale }) {
       'Global technology partner headquartered in Brazil with a European hub in Dublin, Ireland. Managed squads, staff augmentation, and custom software development for enterprises worldwide.',
     foundingDate: '2015',
     sameAs: [
-      'https://www.linkedin.com/company/3035tech',
+      'https://www.linkedin.com/company/3035-tech',
       'https://github.com/3035tech',
       'https://instagram.com/3035.tech',
     ],

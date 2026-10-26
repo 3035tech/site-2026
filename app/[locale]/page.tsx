@@ -27,10 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return createPageMetadata({
     locale,
-    title: { absolute: '3035TECH — Your Global Technology Partner' },
-    description: t['home.metaDescription'] ?? t['hero.subtitle'],
+    title: { absolute: t['home.metaTitle'] },
+    description: t['home.metaDescription'],
     path: '/',
-    ogLabel: 'Global Technology Partner',
+    ogLabel: t['home.ogLabel'],
   })
 }
 

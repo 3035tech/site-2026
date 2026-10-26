@@ -18,16 +18,26 @@ const testimonialKeys = [
 
 export function Testimonials() {
   const [current, setCurrent] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isFocusWithin, setIsFocusWithin] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const { t } = useLanguage()
 
   useEffect(() => {
-    if (isPaused) return
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+    updatePreference()
+    mediaQuery.addEventListener('change', updatePreference)
+    return () => mediaQuery.removeEventListener('change', updatePreference)
+  }, [])
+
+  useEffect(() => {
+    if (isHovered || isFocusWithin || prefersReducedMotion) return
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonialKeys.length)
     }, 6000)
     return () => clearInterval(interval)
-  }, [isPaused])
+  }, [isHovered, isFocusWithin, prefersReducedMotion])
 
   const goToPrevious = () => {
     setCurrent((prev) => (prev - 1 + testimonialKeys.length) % testimonialKeys.length)
@@ -48,8 +58,12 @@ export function Testimonials() {
 
         <div
           className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onFocusCapture={() => setIsFocusWithin(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setIsFocusWithin(false)
+          }}
         >
           <Quote className="absolute -top-4 -left-2 w-16 h-16 text-brand-purple-light/30" />
 
@@ -83,7 +97,10 @@ export function Testimonials() {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex gap-1 sm:gap-2" role="tablist" aria-label="Testimonials">
+            <span className="sm:hidden text-sm text-text-body-light" aria-live="polite">
+              {current + 1} / {testimonialKeys.length}
+            </span>
+            <div className="hidden sm:flex gap-2" role="tablist" aria-label="Testimonials">
               {testimonialKeys.map((_, index) => (
                 <button
                   key={index}

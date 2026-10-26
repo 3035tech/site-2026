@@ -97,6 +97,13 @@ export const caseStudyImages: (SiteImage & { id: string; client: string; slug: s
     alt: 'LunchTeam case study',
   },
   {
+    id: 'twogift',
+    slug: '2gift',
+    client: '2Gift',
+    src: '/images/case-2gift.svg',
+    alt: 'Illustration of the 2Gift restaurant gift card platform',
+  },
+  {
     id: 'fruitpeople',
     slug: 'the-fruit-people',
     client: 'The Fruit People',
