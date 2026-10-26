@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { brandSocialLogo } from '@/lib/images'
-import { siteUrl } from '@/lib/site'
 
 export const ogSize = { width: 1200, height: 630 }
 export const ogContentType = 'image/png'
@@ -41,7 +42,10 @@ type OgImageInput = {
 }
 
 export async function generateOgImage({ title, description, label }: OgImageInput) {
-  const fonts = await getFonts()
+  const [fonts, logoData] = await Promise.all([
+    getFonts(),
+    readFile(join(process.cwd(), 'public', brandSocialLogo.src.slice(1)), 'base64'),
+  ])
 
   return new ImageResponse(
     (
@@ -62,7 +66,7 @@ export async function generateOgImage({ title, description, label }: OgImageInpu
         <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '960px' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`${siteUrl}${brandSocialLogo.src}`}
+            src={`data:image/png;base64,${logoData}`}
             alt={brandSocialLogo.alt}
             width={260}
             height={40}
