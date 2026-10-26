@@ -31,6 +31,7 @@ export function middleware(request: NextRequest) {
     pathname === '/llms.txt' ||
     pathname === '/feed.xml' ||
     pathname === '/og' ||
+    pathname === '/social-image' ||
     pathname === '/opengraph-image' ||
     pathname === '/icon' ||
     pathname.startsWith('/icon?') ||

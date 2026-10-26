@@ -9,7 +9,7 @@ export function buildDynamicOgImageUrl(input: {
   params.set('title', input.title.slice(0, 100))
   if (input.description) params.set('description', input.description.slice(0, 180))
   if (input.label) params.set('label', input.label.slice(0, 50))
-  return `${siteUrl}/og?${params.toString()}`
+  return `${siteUrl}/social-image?${params.toString()}`
 }
 
 export function resolveAbsoluteImageUrl(image?: string) {

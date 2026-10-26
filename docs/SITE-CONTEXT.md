@@ -69,7 +69,7 @@ Documento de referência para alterações futuras no site.
 | Robots | `https://www.3035tech.com/robots.txt` |
 | RSS | `https://www.3035tech.com/feed.xml` |
 | LLMs | `https://www.3035tech.com/llms.txt` |
-| OG dinâmico | `https://www.3035tech.com/og?title=…&description=…` |
+| OG dinâmico | `https://www.3035tech.com/social-image?title=…&description=…` |
 | Favicon | `https://www.3035tech.com/favicon.ico` |
 | Manifest | `https://www.3035tech.com/manifest.webmanifest` |
 

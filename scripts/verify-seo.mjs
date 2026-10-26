@@ -19,6 +19,7 @@ const checks = [
   { path: '/llms.txt', expect: 200, contains: '3035TECH' },
   { path: '/feed.xml', expect: 200, contains: '<rss' },
   { path: '/og?title=Test&description=SEO', expect: 200, contentType: 'image/png' },
+  { path: '/social-image?title=Test&description=SEO', expect: 200, contentType: 'image/png' },
 ]
 
 let failed = 0
