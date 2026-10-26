@@ -172,6 +172,8 @@ Para descoberta de imagens, manter `<img>` com `alt` descritivo, assets acessív
 
 - `public/brand/3035tech-symbol.svg` e `3035tech-logo-stacked.svg`: símbolo e composição vertical em vetor, derivados dos arquivos oficiais da marca.
 - `public/brand/3035tech-wordmark.svg` e `3035tech-wordmark-light.svg`: logotipo horizontal em vetor para fundos claros e escuros. A variante clara aparece na navegação; a escura é referenciada no JSON-LD e sitemap de imagens.
+- `public/images/logos/3035tech-logo.svg` permanece no URL antigo, agora como vetor de verdade, para compatibilidade com links externos.
+- Cartões de compartilhamento (`app/opengraph-image.tsx` e `lib/og-image.tsx`) usam `public/brand/3035tech-wordmark-light-640.png` com o símbolo oficial.
 - `app/favicon.ico` reúne 16, 32 e 48 px; `app/icon.png` tem 64 px; `app/apple-icon.png` tem 180 px. `public/icon.svg` oferece variante vetorial quadrada.
 - `app/manifest.ts` aponta para PNGs de 192 e 512 px e ícone maskable em `public/brand/`.
 - Ao trocar a marca, atualizar todos esses formatos e manter URLs antigas que possam receber links externos.

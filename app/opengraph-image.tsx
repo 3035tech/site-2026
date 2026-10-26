@@ -1,11 +1,14 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import { brandSocialLogo } from '@/lib/images'
 
 export const alt = '3035TECH — Dedicated engineering teams and custom software'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default async function Image() {
-  const [instrumentSerif, dmSans, dmSansBold] = await Promise.all([
+  const [instrumentSerif, dmSans, dmSansBold, logoData] = await Promise.all([
     fetch(
       'https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf'
     ).then((res) => res.arrayBuffer()),
@@ -15,6 +18,7 @@ export default async function Image() {
     fetch(
       'https://fonts.gstatic.com/s/dmsans/v17/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf'
     ).then((res) => res.arrayBuffer()),
+    readFile(join(process.cwd(), 'public', brandSocialLogo.src.slice(1)), 'base64'),
   ])
 
   return new ImageResponse(
@@ -40,19 +44,13 @@ export default async function Image() {
             maxWidth: '900px',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              fontSize: 28,
-              fontFamily: 'DM Sans',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              color: '#A78BFA',
-              marginBottom: 28,
-            }}
-          >
-            3035TECH
-          </div>
+          <img
+            src={`data:image/png;base64,${logoData}`}
+            alt={brandSocialLogo.alt}
+            width={260}
+            height={40}
+            style={{ marginBottom: 28 }}
+          />
 
           <div
             style={{

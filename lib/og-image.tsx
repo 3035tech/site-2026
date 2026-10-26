@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og'
+import { brandSocialLogo } from '@/lib/images'
+import { siteUrl } from '@/lib/site'
 
 export const ogSize = { width: 1200, height: 630 }
 export const ogContentType = 'image/png'
@@ -58,19 +60,14 @@ export async function generateOgImage({ title, description, label }: OgImageInpu
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '960px' }}>
-          <div
-            style={{
-              display: 'flex',
-              fontSize: 28,
-              fontFamily: 'DM Sans',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              color: '#A78BFA',
-              marginBottom: 28,
-            }}
-          >
-            3035TECH
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${siteUrl}${brandSocialLogo.src}`}
+            alt={brandSocialLogo.alt}
+            width={260}
+            height={40}
+            style={{ marginBottom: 28 }}
+          />
 
           {label && (
             <div

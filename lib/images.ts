@@ -15,6 +15,11 @@ export const brandLogoOnDark: SiteImage = {
   alt: '3035TECH',
 }
 
+export const brandSocialLogo: SiteImage = {
+  src: '/brand/3035tech-wordmark-light-640.png',
+  alt: '3035TECH',
+}
+
 export const clientLogos: (SiteImage & { name: string; url: string })[] = [
   {
     name: 'Arezzo',
@@ -155,6 +160,8 @@ export const teachAlumniLogos: SiteImage[] = [
 export const allSiteImagePaths = [
   brandLogo.src,
   brandLogoOnDark.src,
+  brandSocialLogo.src,
+  '/images/logos/3035tech-logo.svg',
   '/brand/3035tech-symbol.svg',
   '/brand/3035tech-symbol-light.svg',
   '/icon.svg',
