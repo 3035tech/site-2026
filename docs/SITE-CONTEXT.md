@@ -58,6 +58,7 @@ Documento de referência para alterações futuras no site.
 - `<html lang>` via layout de locale
 - **Canonical** sempre em `www.3035tech.com`
 - Redirect permanente `3035tech.com` → `www.3035tech.com` em `next.config.mjs`
+- URL legada `/index.html` → `/en` no domínio canônico, para resolver o 404 visto no Search Console
 - Verificação Bing: `public/BingSiteAuth.xml`
 
 ### URLs críticas de produção
@@ -71,6 +72,8 @@ Documento de referência para alterações futuras no site.
 | OG dinâmico | `https://www.3035tech.com/og?title=…&description=…` |
 | Favicon | `https://www.3035tech.com/favicon.ico` |
 | Manifest | `https://www.3035tech.com/manifest.webmanifest` |
+
+Propriedade Google Search Console verificada em 2026-10-26: domínio `3035tech.com` (abrange `www` e sem `www`). Sitemaps `https://www.3035tech.com/sitemap.xml` e `https://www.3035tech.com/image-sitemap.xml` enviados e lidos com sucesso nessa data. Relatórios da propriedade nova ainda em processamento; conferir cobertura e consultas após a atualização do Google. Entradas antigas de sitemap (`https://3035tech.com/sitemap.xml` e `https://www.3035tech.com/sitemap`) permanecem no histórico com erro de leitura.
 
 > **Atenção Bing:** registrar o site como `https://www.3035tech.com`, **não** como URL do sitemap.
 

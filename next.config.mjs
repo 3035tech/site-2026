@@ -3,6 +3,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/index.html',
+        destination: 'https://www.3035tech.com/en',
+        permanent: true,
+      },
+      {
         source: '/dublin',
         destination: '/en/ireland',
         permanent: true,
