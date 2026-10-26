@@ -80,7 +80,7 @@ Propriedade Google Search Console verificada em 2026-10-26: domínio `3035tech.c
 ### O que cada página/recurso faz
 | Arquivo | Função |
 |---------|--------|
-| `app/sitemap.ts` | Sitemap com prioridade e **hreflang** (`buildAlternateLanguages`); `lastModified` só em posts com data de publicação conhecida |
+| `app/sitemap.ts` | Sitemap com uma entrada por URL nos **4 idiomas**, prioridade e **hreflang** (`buildAlternateLanguages`); `lastModified` só em posts com data de publicação conhecida |
 | `app/image-sitemap.xml/route.ts` | Sitemap de imagens de home, serviços e cases nos quatro idiomas |
 | `app/robots.ts` | Permite crawlers gerais + bots de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) |
 | `app/feed.xml/route.ts` | RSS dos posts (EN) |

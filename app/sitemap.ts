@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { blogSlugs, getBlogPost } from '@/lib/blog-data'
-import { localizedPath } from '@/lib/i18n/config'
+import { locales, localizedPath } from '@/lib/i18n/config'
 import { buildAlternateLanguages } from '@/lib/i18n/server'
 import { caseStudySlugs, serviceSlugs } from '@/lib/pages-data'
 import { siteUrl } from '@/lib/site'
@@ -37,11 +37,11 @@ function priorityForPath(path: string): number {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return basePaths.map((path) => {
-    const enPath = localizedPath('en', path)
+  return basePaths.flatMap((path) => locales.map((locale) => {
+    const localePath = localizedPath(locale, path)
     const lastModified = lastModifiedForPath(path)
     return {
-      url: `${siteUrl}${enPath}`,
+      url: `${siteUrl}${localePath}`,
       ...(lastModified ? { lastModified } : {}),
       changeFrequency: path === '/' ? 'weekly' : path.includes('/blog/') ? 'monthly' : 'monthly',
       priority: priorityForPath(path),
@@ -49,5 +49,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: buildAlternateLanguages(path),
       },
     }
-  })
+  }))
 }
