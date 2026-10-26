@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { LocaleLink } from '@/components/locale-link'
 import { useLanguage } from '@/lib/i18n'
+import { trackEvent } from '@/lib/ga'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error' | 'unavailable'
 
@@ -48,13 +49,17 @@ export function ContactForm() {
 
       form.reset()
       setStatus('success')
+      trackEvent({ action: 'generate_lead', category: 'contact', label: 'form' })
     } catch {
       setStatus('error')
     }
   }
 
   return (
-    <div className="mt-12 text-left max-w-xl mx-auto">
+    <div className="mt-8 sm:mt-10 text-left max-w-xl mx-auto">
+      <p className="mb-6 text-sm text-white/75 leading-relaxed">
+        {t('contact.form.help')}
+      </p>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="absolute left-[-9999px]" aria-hidden="true">
           <label htmlFor="website">Website</label>
@@ -113,7 +118,7 @@ export function ContactForm() {
           />
         </div>
 
-        <p className="text-xs text-white/40 leading-relaxed">
+        <p className="text-sm text-white/65 leading-relaxed">
           {t('contact.form.privacyNotice')}{' '}
           <LocaleLink
             href="/privacy"

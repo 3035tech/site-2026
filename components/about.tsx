@@ -4,13 +4,6 @@ import { useLanguage } from "@/lib/i18n"
 import { LocaleLink } from "@/components/locale-link"
 import { SectionHeader } from "@/components/section-header"
 
-const flagEmoji: Record<string, string> = {
-  BR: "🇧🇷",
-  US: "🇺🇸",
-  IE: "🇮🇪",
-  DE: "🇩🇪",
-}
-
 const locationKeys = [
   { flag: "BR", countryKey: "about.locations.brazil", descKey: "about.locations.brazilDesc" },
   { flag: "US", countryKey: "about.locations.usa", descKey: "about.locations.usaDesc" },
@@ -56,8 +49,8 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
                 key={location.flag}
                 className="bg-off-white rounded-[20px] p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
               >
-                <span className="text-4xl" role="img" aria-label={t(location.countryKey)}>
-                  {flagEmoji[location.flag]}
+                <span className="inline-flex h-10 min-w-10 items-center justify-center rounded-lg border border-brand-purple/20 bg-brand-purple/5 px-2 text-sm font-semibold tracking-wide text-brand-purple" aria-hidden="true">
+                  {location.flag}
                 </span>
                 <h3 className="mt-4 text-navy-dark font-medium text-lg">
                   {t(location.countryKey)}

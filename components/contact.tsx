@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/contact-form"
 import { LocaleLink } from "@/components/locale-link"
 import { useLanguage } from "@/lib/i18n"
+import { trackEvent } from "@/lib/ga"
 import {
   contactEmail,
   contactMailtoUrl,
@@ -20,7 +21,7 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
     <section
       id="contact"
-      className={`relative bg-navy-dark ${hideHeader ? "py-12 sm:py-20" : "py-24 sm:py-32"}`}
+      className={`relative bg-navy-dark ${hideHeader ? "pt-4 pb-16 sm:pb-20" : "py-24 sm:py-32"}`}
     >
       {/* Background Glow */}
       <div
@@ -46,7 +47,7 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
 
         <ContactForm />
 
-        <p className="mt-10 text-sm text-white/40">{t("contact.form.orDirect")}</p>
+        <p className="mt-10 text-sm text-white/70">{t("contact.form.orDirect")}</p>
 
         {/* CTAs */}
         <div className={`flex flex-col sm:flex-row justify-center gap-4 mt-6`}>
@@ -55,7 +56,7 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
             size="lg"
             className="bg-brand-purple hover:bg-brand-purple-hover text-white rounded-xl px-8 py-6 text-base font-medium hover:shadow-[0_8px_30px_rgba(124,58,237,0.25)] transition-all duration-200"
           >
-            <Link href={contactMailtoUrl}>
+            <Link href={contactMailtoUrl} onClick={() => trackEvent({ action: 'contact_channel_click', category: 'contact', label: 'email' })}>
               {contactEmail}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -70,6 +71,7 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
               href={contactWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent({ action: 'contact_channel_click', category: 'contact', label: 'whatsapp' })}
             >
               {t("contact.whatsapp")}
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -79,15 +81,17 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
 
         {/* Contact Details */}
         <div className="mt-16 pt-8 border-t border-white/[0.06]">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/40">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/65">
             <Link
               href={contactMailtoUrl}
+              onClick={() => trackEvent({ action: 'contact_channel_click', category: 'contact', label: 'email' })}
               className="hover:text-brand-purple-light transition-colors"
             >
               {contactEmail}
             </Link>
             <Link
               href={contactTelUrl}
+              onClick={() => trackEvent({ action: 'contact_channel_click', category: 'contact', label: 'phone' })}
               className="hover:text-brand-purple-light transition-colors"
             >
               {contactPhoneDisplayAlt}
@@ -96,6 +100,7 @@ export function Contact({ hideHeader = false }: { hideHeader?: boolean }) {
               href={contactWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent({ action: 'contact_channel_click', category: 'contact', label: 'whatsapp' })}
               className="hover:text-brand-purple-light transition-colors"
             >
               {t("contact.whatsapp")}

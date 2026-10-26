@@ -198,21 +198,6 @@ export function StructuredData({ locale }: { locale: Locale }) {
     },
   }
 
-  const faqItems = getFaqItems(locale)
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  }
-
   const siteNavigationSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -319,7 +304,6 @@ export function StructuredData({ locale }: { locale: Locale }) {
     professionalServiceSchema,
     educationalOrgSchema,
     siteNavigationSchema,
-    faqSchema,
     caseStudiesSchema,
     blogSchema,
   ]
@@ -334,5 +318,27 @@ export function StructuredData({ locale }: { locale: Locale }) {
         />
       ))}
     </>
+  )
+}
+
+export function FaqStructuredData({ locale }: { locale: Locale }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: getFaqItems(locale).map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   )
 }

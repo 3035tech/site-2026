@@ -11,6 +11,7 @@ import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
 import { SectionViewTracker } from '@/components/section-view-tracker'
 import { Faq } from '@/components/faq'
+import { FaqStructuredData } from '@/components/structured-data'
 import { createPageMetadata } from '@/lib/metadata'
 import { translations } from '@/lib/i18n/translations'
 import { getLocaleOrDefault } from '@/lib/i18n/server'
@@ -34,18 +35,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   })
 }
 
-export default function HomePage() {
+export default async function HomePage({ params }: Props) {
+  const { locale: rawLocale } = await params
+  const locale = getLocaleOrDefault(rawLocale) as Locale
+
   return (
     <main>
+      <FaqStructuredData locale={locale} />
       <SectionViewTracker />
       <Navbar />
       <Hero />
       <ClientLogos />
       <Services />
       <CaseStudies />
-      <Teach />
       <Testimonials />
       <About />
+      <Teach />
       <Faq />
       <Contact />
       <Footer />

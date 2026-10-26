@@ -15,6 +15,7 @@ export type ServiceSection = {
 export type ServicePage = {
   slug: string
   title: string
+  fit: string
   description: string
   introParagraphs: string[]
   sections: ServiceSection[]
@@ -118,6 +119,7 @@ export function getServicePages(locale: Locale): ServicePage[] {
     return {
       slug,
       title: t(`services.${key}.title`),
+      fit: t(`services.${key}.fit`),
       description: t(`services.${key}.desc`),
       introParagraphs,
       sections,

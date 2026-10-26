@@ -32,6 +32,10 @@ Documento de referência para alterações futuras no site.
 ### Blocos de copy importantes
 
 - A abertura da home descreve a entrega de produtos digitais por equipes de engenharia dedicadas; o subtítulo apresenta squads gerenciados, especialistas integrados ao time e software sob medida. O CTA principal leva à página de contato com o convite para falar sobre o projeto. Título, descrição e label da imagem social da home também são localizados nos quatro idiomas.
+- A home mostra um resultado público do case 2Gift próximo ao CTA, seguido por serviços descritos pela necessidade do comprador. Depoimentos aparecem após os cases; 3035TEACH permanece na home após About. O contato usa o mesmo convite nas quatro línguas e pede apenas contexto inicial do projeto.
+- Nos cases, mostrar o impacto declarado antes da imagem e evitar repetir a descrição da abertura. Não criar números ou resultados sem evidência aprovada. Fotos e telas reais dos produtos continuam pendentes de material autorizado.
+- Eventos de conversão: `generate_lead` somente após sucesso do formulário; `contact_channel_click` nos canais diretos. Respeitar consentimento analítico existente.
+- O schema `FAQPage` aparece somente na home, junto às perguntas visíveis. A página de contato é focada no formulário e canais diretos, sem repetir as 13 perguntas.
 
 | Chave i18n | Onde aparece | Regra |
 |------------|--------------|-------|

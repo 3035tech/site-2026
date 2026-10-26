@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
 const footerLinkClass =
-  "inline-flex items-center min-h-11 px-3 text-sm text-white/40 hover:text-brand-purple-light transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 focus-visible:ring-offset-navy-dark"
+  "inline-flex items-center min-h-11 px-3 text-sm text-white/65 hover:text-brand-purple-light transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 focus-visible:ring-offset-navy-dark"
 
 export function Footer() {
   const { t } = useLanguage()

@@ -33,11 +33,11 @@ function CaseStudyContent({
         </h2>
 
         <div className="flex flex-wrap gap-4 text-sm">
-          <span className="text-white/40">
+          <span className="text-white/65">
             <span className="text-white/60">{t("cases.location")}:</span>{" "}
             {t(`cases.${caseItem.id}.location`)}
           </span>
-          <span className="text-white/40">
+          <span className="text-white/65">
             <span className="text-white/60">{t("cases.industry")}:</span>{" "}
             {t(`cases.${caseItem.id}.industry`)}
           </span>
@@ -93,7 +93,7 @@ function CaseStudyContent({
 
           <div className="absolute bottom-6 left-6 right-6 z-10">
             <div className="bg-navy-dark/80 backdrop-blur-sm rounded-xl p-4 border border-white/[0.06]">
-              <p className="text-xs text-white/40 uppercase tracking-wider mb-1">
+              <p className="text-sm text-white/65 mb-1">
                 {t("cases.engagement")}
               </p>
               <p className="text-white font-medium">

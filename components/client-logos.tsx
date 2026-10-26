@@ -20,7 +20,7 @@ export function ClientLogos() {
   return (
     <section className="relative bg-navy-dark py-20 lg:py-24 border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm uppercase tracking-[0.2em] text-white/40 mb-16 font-medium">
+        <p className="text-center text-sm tracking-wide text-white/65 mb-12 font-medium">
           {t("clients.title")}
         </p>
 

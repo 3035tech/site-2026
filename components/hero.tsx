@@ -1,54 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { LocaleLink } from "@/components/locale-link"
 import { useLanguage } from "@/lib/i18n"
-
-function AnimatedCounter({
-  target,
-  suffix = "",
-}: {
-  target: string
-  suffix?: string
-}) {
-  const numericTarget = parseInt(target.replace(/\D/g, "")) || 0
-  const [count, setCount] = useState(numericTarget)
-
-  useEffect(() => {
-    const duration = 2000
-    const steps = 60
-    const increment = numericTarget / steps
-    let current = 0
-    let timer: ReturnType<typeof setInterval>
-
-    const frame = requestAnimationFrame(() => {
-      setCount(0)
-      timer = setInterval(() => {
-        current += increment
-        if (current >= numericTarget) {
-          setCount(numericTarget)
-          clearInterval(timer)
-        } else {
-          setCount(Math.floor(current))
-        }
-      }, duration / steps)
-    })
-
-    return () => {
-      cancelAnimationFrame(frame)
-      clearInterval(timer)
-    }
-  }, [numericTarget])
-
-  return (
-    <span suppressHydrationWarning>
-      {count}
-      {suffix}
-    </span>
-  )
-}
 
 export function Hero() {
   const { t } = useLanguage()
@@ -76,13 +31,13 @@ export function Hero() {
         <div className="max-w-4xl">
           {/* Badge */}
           <div className="animate-fade-up">
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-brand-purple/[0.08] border border-brand-purple/[0.15] text-brand-purple-light max-w-full text-center leading-snug whitespace-normal">
+            <span className="inline-flex items-center px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide bg-brand-purple/[0.08] border border-brand-purple/[0.15] text-brand-purple-light max-w-full text-center leading-snug whitespace-normal">
               {t("hero.badge")}
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-7xl font-serif text-white leading-tight animate-fade-up animation-delay-100 text-balance">
+          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight animate-fade-up animation-delay-100 text-balance">
             {t("hero.headline1")}{" "}
             <span className="italic gradient-text">{t("hero.headlineHighlight")}</span>{" "}
             {t("hero.headline2")}
@@ -114,6 +69,13 @@ export function Hero() {
               <LocaleLink href="/case-studies">{t("hero.cta.secondary")}</LocaleLink>
             </Button>
           </div>
+          <LocaleLink
+            href="/case-studies/2gift"
+            className="mt-7 inline-flex items-start gap-2 text-sm text-white/75 hover:text-white underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple-light"
+          >
+            <span className="text-brand-purple-light" aria-hidden="true">↗</span>
+            {t("hero.proof")}
+          </LocaleLink>
         </div>
 
         {/* Stats Bar */}
@@ -130,12 +92,9 @@ export function Hero() {
                   } ${index === 1 ? "border-r border-white/[0.06] lg:border-r" : ""}`}
                 >
                   <div className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand-purple-light">
-                    <AnimatedCounter
-                      target={stat.value}
-                      suffix={stat.value.includes("+") ? "+" : ""}
-                    />
+                    {stat.value}
                   </div>
-                  <div className="mt-2 text-xs sm:text-sm uppercase tracking-wider text-white/45 font-medium">
+                  <div className="mt-2 text-sm tracking-wide text-white/65 font-medium">
                     {stat.label}
                   </div>
                 </div>

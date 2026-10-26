@@ -7,10 +7,10 @@ import { useLanguage } from "@/lib/i18n"
 
 const services = [
   {
-    number: "01",
     slug: "managed-squads",
     titleKey: "services.managedSquads.title",
     descKey: "services.managedSquads.desc",
+    fitKey: "services.managedSquads.fit",
     highlightKeys: [
       "services.managedSquads.h1",
       "services.managedSquads.h2",
@@ -18,10 +18,10 @@ const services = [
     ],
   },
   {
-    number: "02",
     slug: "staff-augmentation",
     titleKey: "services.staffAug.title",
     descKey: "services.staffAug.desc",
+    fitKey: "services.staffAug.fit",
     highlightKeys: [
       "services.staffAug.h1",
       "services.staffAug.h2",
@@ -29,10 +29,10 @@ const services = [
     ],
   },
   {
-    number: "03",
     slug: "custom-development",
     titleKey: "services.customDev.title",
     descKey: "services.customDev.desc",
+    fitKey: "services.customDev.fit",
     highlightKeys: [
       "services.customDev.h1",
       "services.customDev.h2",
@@ -40,10 +40,10 @@ const services = [
     ],
   },
   {
-    number: "04",
     slug: "support-evolution",
     titleKey: "services.support.title",
     descKey: "services.support.desc",
+    fitKey: "services.support.fit",
     highlightKeys: [
       "services.support.h1",
       "services.support.h2",
@@ -67,12 +67,12 @@ export function Services() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border rounded-[20px] overflow-hidden">
           {services.map((service) => (
             <LocaleLink
-              key={service.number}
+              key={service.slug}
               href={`/services/${service.slug}`}
               className="group bg-white hover:bg-navy-dark p-8 sm:p-10 transition-all duration-500"
             >
-              <span className="text-brand-purple text-sm font-bold">
-                {service.number}
+              <span className="text-brand-purple text-sm font-semibold group-hover:text-brand-purple-light">
+                {t(service.fitKey)}
               </span>
 
               <h3 className="mt-4 text-2xl sm:text-3xl font-serif text-navy-dark group-hover:text-white transition-colors duration-500">

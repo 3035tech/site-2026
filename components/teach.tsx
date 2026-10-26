@@ -62,12 +62,12 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
           <div>
             {!hideHeader && (
               <>
-                <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] bg-brand-purple/10 border border-brand-purple/15 text-brand-purple">
+                <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold tracking-wide bg-brand-purple/10 border border-brand-purple/15 text-brand-purple-light">
                   {t("teach.label")}
                 </span>
                 <h2 className="mt-6 text-4xl sm:text-5xl font-serif text-white text-balance">
                   {t("teach.title")}
-                  <span className="text-brand-purple">{t("teach.titleHighlight")}</span>
+                  <span className="text-brand-purple-light">{t("teach.titleHighlight")}</span>
                 </h2>
                 <div className="mt-6 space-y-4 text-white/55 leading-relaxed">
                   <p>{t("teach.desc1")}</p>
@@ -88,8 +88,8 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
                 </h4>
                 <ul className="space-y-2">
                   {curriculum.technical.map((item, index) => (
-                    <li key={index} className="text-white/45 text-sm flex items-start gap-2">
-                      <span className="text-brand-purple mt-1.5">•</span>
+                    <li key={index} className="text-white/65 text-sm flex items-start gap-2">
+                      <span className="text-brand-purple-light mt-1.5">•</span>
                       {item}
                     </li>
                   ))}
@@ -101,8 +101,8 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
                 </h4>
                 <ul className="space-y-2">
                   {curriculum.professional.map((item, index) => (
-                    <li key={index} className="text-white/45 text-sm flex items-start gap-2">
-                      <span className="text-brand-purple mt-1.5">•</span>
+                    <li key={index} className="text-white/65 text-sm flex items-start gap-2">
+                      <span className="text-brand-purple-light mt-1.5">•</span>
                       {item}
                     </li>
                   ))}
@@ -128,7 +128,7 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
                 </span>
               </div>
               <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-                <span className="text-white/40 text-sm uppercase tracking-widest">
+                <span className="text-white/65 text-sm tracking-wide">
                   {t("teach.editions")}
                 </span>
               </div>
@@ -156,11 +156,11 @@ export function Teach({ hideHeader = false }: { hideHeader?: boolean }) {
                       />
                     </div>
                   ) : (
-                    <div className="text-2xl font-serif text-brand-purple">
+                  <div className="text-2xl font-serif text-brand-purple-light">
                       {stat.value}
                     </div>
                   )}
-                  <div className="mt-1 text-xs text-white/40">{t(stat.labelKey)}</div>
+                  <div className="mt-1 text-sm text-white/65">{t(stat.labelKey)}</div>
                 </div>
               ))}
             </div>

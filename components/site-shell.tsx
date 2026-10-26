@@ -25,6 +25,7 @@ export function InnerPageHero({
   backHref = '/',
   backLabel = 'Back to home',
   breadcrumbItems,
+  compact = false,
 }: {
   label: string
   title: ReactNode
@@ -32,16 +33,17 @@ export function InnerPageHero({
   backHref?: string
   backLabel?: string
   breadcrumbItems?: BreadcrumbItem[]
+  compact?: boolean
 }) {
   return (
-    <section className="bg-navy-dark pt-28 sm:pt-32 pb-14 sm:pb-20">
+    <section className={`bg-navy-dark pt-28 sm:pt-32 ${compact ? 'pb-6 sm:pb-10' : 'pb-14 sm:pb-20'}`}>
       {breadcrumbItems && breadcrumbItems.length > 0 && (
         <BreadcrumbJsonLd items={breadcrumbItems} />
       )}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav
           aria-label="Breadcrumb"
-          className="pb-8 sm:pb-10 mb-8 sm:mb-10 border-b border-white/[0.08]"
+          className={`${compact ? 'pb-5 mb-6 sm:pb-7 sm:mb-8' : 'pb-8 sm:pb-10 mb-8 sm:mb-10'} border-b border-white/[0.08]`}
         >
           <Link
             href={backHref}

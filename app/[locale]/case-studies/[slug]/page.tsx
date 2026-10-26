@@ -66,16 +66,27 @@ export default async function CaseStudyPage({ params }: Props) {
         ])}
       />
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-10">
-            <Image
-              src={caseStudy.image}
-              alt={`${caseStudy.client} — ${caseStudy.industry}`}
-              fill
-              className="object-cover"
-              priority
-            />
+      <section className="bg-white py-12 sm:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[2fr_3fr] gap-6 lg:gap-8 mb-10">
+            <div className="rounded-2xl bg-off-white p-6 sm:p-8 flex flex-col justify-between gap-8">
+              <h2 className="text-sm font-semibold text-brand-purple tracking-wide">
+                {t['cases.impact']}
+              </h2>
+              <p className="text-2xl sm:text-3xl font-serif text-navy-dark leading-snug">
+                {caseStudy.impact}
+              </p>
+            </div>
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-off-white">
+              <Image
+                src={caseStudy.image}
+                alt={`${caseStudy.client} — ${caseStudy.industry}`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
 
           <dl className="grid sm:grid-cols-3 gap-6 mb-10 pb-10 border-b border-border">
@@ -99,16 +110,11 @@ export default async function CaseStudyPage({ params }: Props) {
             </div>
           </dl>
 
-          <div className="space-y-6 text-text-body-light leading-relaxed text-lg">
-            <p>{caseStudy.description}</p>
-            <p>{caseStudy.details}</p>
-          </div>
-
-          <div className="mt-10 rounded-2xl bg-off-white p-8">
-            <h2 className="text-xl font-serif text-navy-dark mb-3">
-              {t['cases.impact']}
+          <div className="max-w-3xl space-y-4 text-text-body-light leading-relaxed text-lg">
+            <h2 className="text-2xl font-serif text-navy-dark">
+              {t['cases.ourWork']}
             </h2>
-            <p className="text-text-body-light leading-relaxed">{caseStudy.impact}</p>
+            <p>{caseStudy.details}</p>
           </div>
         </div>
       </section>

@@ -50,7 +50,7 @@ export default async function ServicesIndexPage({ params }: Props) {
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {servicePages.map((service, index) => (
+            {servicePages.map((service) => (
               <Link
                 key={service.slug}
                 href={localizedPath(locale, `/services/${service.slug}`)}
@@ -67,8 +67,8 @@ export default async function ServicesIndexPage({ params }: Props) {
                   </div>
                 )}
                 <div className="p-8">
-                  <span className="text-brand-purple text-sm font-bold">
-                    {String(index + 1).padStart(2, '0')}
+                  <span className="text-brand-purple text-sm font-semibold">
+                    {service.fit}
                   </span>
                   <h2 className="mt-3 text-2xl font-serif text-navy-dark group-hover:text-brand-purple transition-colors">
                     {service.title}

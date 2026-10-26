@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { createPageMetadata } from '@/lib/metadata'
 import { getStaticPageMeta } from '@/lib/pages-data'
 import { Contact } from '@/components/contact'
-import { Faq } from '@/components/faq'
 import { InnerPageHero, SiteShell } from '@/components/site-shell'
 import { getLocaleOrDefault } from '@/lib/i18n/server'
 import { localizedPath, type Locale } from '@/lib/i18n/config'
@@ -35,6 +34,7 @@ export default async function ContactPage({ params }: Props) {
   return (
     <SiteShell>
       <InnerPageHero
+        compact
         label={t['contact.label']}
         title={`${t['contact.title']} ${t['contact.titleHighlight']}`}
         description={t['contact.subtitle']}
@@ -46,7 +46,6 @@ export default async function ContactPage({ params }: Props) {
         ])}
       />
       <Contact hideHeader />
-      <Faq />
     </SiteShell>
   )
 }
