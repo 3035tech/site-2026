@@ -1,7 +1,4 @@
 import { ImageResponse } from 'next/og'
-import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
-import { brandSocialLogo } from '@/lib/images'
 
 export const ogSize = { width: 1200, height: 630 }
 export const ogContentType = 'image/png'
@@ -42,10 +39,7 @@ type OgImageInput = {
 }
 
 export async function generateOgImage({ title, description, label }: OgImageInput) {
-  const [fonts, logoData] = await Promise.all([
-    getFonts(),
-    readFile(join(process.cwd(), 'public', brandSocialLogo.src.slice(1)), 'base64'),
-  ])
+  const fonts = await getFonts()
 
   return new ImageResponse(
     (
@@ -64,14 +58,31 @@ export async function generateOgImage({ title, description, label }: OgImageInpu
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '960px' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`data:image/png;base64,${logoData}`}
-            alt={brandSocialLogo.alt}
-            width={260}
-            height={40}
-            style={{ marginBottom: 28 }}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
+            <svg
+              width="58"
+              height="40"
+              viewBox="100 247.7 142 98.65"
+              aria-label="3035TECH symbol"
+            >
+              <path d="M157.27 247.74H129.2L101 296.99H128.99Z" fill="#A78BFA" />
+              <path d="M213.68 247.74H185.6L129.19 346.26H157.26Z" fill="#A78BFA" />
+              <path d="M185.54 346.24H213.62L241.81 296.99H213.83Z" fill="#A78BFA" />
+              <path d="M157.27 346.26H129.2L101 296.99H128.99Z" fill="#A78BFA" />
+              <path d="M185.54 247.74H213.62L241.81 296.99H213.83Z" fill="#A78BFA" />
+            </svg>
+            <span
+              style={{
+                fontFamily: 'DM Sans',
+                fontWeight: 700,
+                fontSize: 40,
+                letterSpacing: '-0.08em',
+                color: '#A78BFA',
+              }}
+            >
+              3035TECH
+            </span>
+          </div>
 
           {label && (
             <div
