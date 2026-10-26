@@ -69,6 +69,8 @@ Documento de referência para alterações futuras no site.
 | RSS | `https://www.3035tech.com/feed.xml` |
 | LLMs | `https://www.3035tech.com/llms.txt` |
 | OG dinâmico | `https://www.3035tech.com/og?title=…&description=…` |
+| Favicon | `https://www.3035tech.com/favicon.ico` |
+| Manifest | `https://www.3035tech.com/manifest.webmanifest` |
 
 > **Atenção Bing:** registrar o site como `https://www.3035tech.com`, **não** como URL do sitemap.
 
@@ -162,6 +164,14 @@ Script: `scripts/verify-seo.mjs` — CI em `.github/workflows/ci.yml`.
 O case 2Gift foi divulgado publicamente pela 3035TECH e por Thomas Metz no LinkedIn: plataforma de gift cards para restaurantes entregue em produção em cinco meses, seguida de suporte e evolução. A arte `case-2gift.svg` é uma ilustração editorial, não uma captura do produto. Fonte pública: https://ie.linkedin.com/in/thomas-metz
 
 Para descoberta de imagens, manter `<img>` com `alt` descritivo, assets acessíveis sem login e sitemap de imagens. Para busca por IA, o `robots.txt` permite OAI-SearchBot e outros crawlers; `llms.txt` é complementar e não substitui indexação normal.
+
+### Identidade visual 3035TECH
+
+- `public/brand/3035tech-symbol.svg` e `3035tech-logo-stacked.svg`: símbolo e composição vertical em vetor, derivados dos arquivos oficiais da marca.
+- `public/brand/3035tech-wordmark.svg` e `3035tech-wordmark-light.svg`: logotipo horizontal em vetor para fundos claros e escuros. A variante clara aparece na navegação; a escura é referenciada no JSON-LD e sitemap de imagens.
+- `app/favicon.ico` reúne 16, 32 e 48 px; `app/icon.png` tem 64 px; `app/apple-icon.png` tem 180 px. `public/icon.svg` oferece variante vetorial quadrada.
+- `app/manifest.ts` aponta para PNGs de 192 e 512 px e ícone maskable em `public/brand/`.
+- Ao trocar a marca, atualizar todos esses formatos e manter URLs antigas que possam receber links externos.
 
 ### Serviços (`lib/pages-data.ts`)
 | Slug | Imagem |

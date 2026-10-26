@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="3035TECH">
-  <rect width="32" height="32" rx="6" fill="#7C3AED"/>
-  <text x="16" y="21" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">3035</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="3035TECH">
+  <rect width="64" height="64" rx="12" fill="#0F172A"/>
+  <svg x="4" y="12.5" width="56" height="39" viewBox="205.25 167.78 432.22 302.42">
+<path fill-rule="nonzero" fill="#A78BFA" fill-opacity="1" d="M 377.957031 167.796875 L 291.804688 167.796875 L 205.261719 318.953125 L 291.15625 318.988281 Z M 377.957031 167.796875 "/>
+<path fill-rule="nonzero" fill="#C4B5FD" fill-opacity="1" d="M 551.097656 167.796875 L 464.941406 167.796875 L 291.804688 470.179688 L 377.960938 470.179688 Z M 551.097656 167.796875 "/>
+<path fill-rule="nonzero" fill="#7C3AED" fill-opacity="1" d="M 464.753906 470.109375 L 550.921875 470.109375 L 637.449219 318.953125 L 551.570312 318.917969 Z M 464.753906 470.109375 "/>
+<path fill-rule="nonzero" fill="#7C3AED" fill-opacity="1" d="M 377.957031 470.179688 L 291.800781 470.179688 L 205.261719 318.953125 L 291.152344 318.988281 Z M 377.957031 470.179688 "/>
+<path fill-rule="nonzero" fill="#A78BFA" fill-opacity="1" d="M 464.753906 167.796875 L 550.921875 167.796875 L 637.449219 318.953125 L 551.570312 318.988281 Z M 464.753906 167.796875 "/>
+  </svg>
 </svg>

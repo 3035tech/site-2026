@@ -6,7 +6,12 @@ export type SiteImage = {
 }
 
 export const brandLogo: SiteImage = {
-  src: '/images/logos/3035tech-logo.svg',
+  src: '/brand/3035tech-wordmark.svg',
+  alt: '3035TECH',
+}
+
+export const brandLogoOnDark: SiteImage = {
+  src: '/brand/3035tech-wordmark-light.svg',
   alt: '3035TECH',
 }
 
@@ -149,6 +154,10 @@ export const teachAlumniLogos: SiteImage[] = [
 /** All image paths referenced by the site — used for validation scripts */
 export const allSiteImagePaths = [
   brandLogo.src,
+  brandLogoOnDark.src,
+  '/brand/3035tech-symbol.svg',
+  '/brand/3035tech-symbol-light.svg',
+  '/icon.svg',
   ...clientLogos.map((c) => c.src),
   ...caseStudyImages.map((c) => c.src),
   ...teachAlumniLogos.map((c) => c.src),

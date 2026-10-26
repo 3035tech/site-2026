@@ -10,7 +10,7 @@ import { useLanguage, Language } from "@/lib/i18n"
 import { useSwitchLocale } from "@/lib/i18n/navigation"
 import { stripLocalePrefix } from "@/lib/i18n/config"
 import { usePathname } from "next/navigation"
-import { brandLogo } from "@/lib/images"
+import { brandLogoOnDark } from "@/lib/images"
 import { cn } from "@/lib/utils"
 
 const mobileLanguages: { code: Language; flag: string }[] = [
@@ -104,10 +104,10 @@ export function Navbar() {
           <div className="flex items-center justify-between h-20">
             <LocaleLink href="/" className="flex items-center" onClick={closeMobileMenu}>
               <Image
-                src={brandLogo.src}
-                alt={brandLogo.alt}
-                width={140}
-                height={40}
+                src={brandLogoOnDark.src}
+                alt={brandLogoOnDark.alt}
+                width={178}
+                height={28}
                 className="h-8 w-auto"
                 priority
               />
@@ -150,10 +150,10 @@ export function Navbar() {
           <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20 border-b border-white/[0.06]">
             <LocaleLink href="/" className="flex items-center" onClick={closeMobileMenu}>
               <Image
-                src={brandLogo.src}
-                alt={brandLogo.alt}
-                width={140}
-                height={40}
+                src={brandLogoOnDark.src}
+                alt={brandLogoOnDark.alt}
+                width={178}
+                height={28}
                 className="h-8 w-auto"
               />
             </LocaleLink>
